@@ -19,6 +19,13 @@ final class GetActiveWatchlistUseCase: GetActiveWatchlistUseCaseProtocol {
     }
 
     func getActiveWatchlist() -> Watchlist? {
-        repository.activeWatchlist
+        if let activeWatchlist = repository.activeWatchlist {
+            return activeWatchlist
+        } else {
+            let initialWatchlist = Watchlist(id: UUID().uuidString, stocks: ["AAPL", "MSFT", "GOOG"])
+            repository.addWatchlist(initialWatchlist)
+            repository.activeWatchlist = initialWatchlist
+            return initialWatchlist
+        }
     }
 }

@@ -9,5 +9,7 @@ import Foundation
 
 public protocol WatchlistRepositoryProtocol: AnyObject {
     var watchlists: [Watchlist] { get }
-    var activeWatchlist: Watchlist? { get }
+    var activeWatchlist: Watchlist? { get set }
+
+    func addWatchlist(_ watchlist: Watchlist)
 }

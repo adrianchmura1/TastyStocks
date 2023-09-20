@@ -15,11 +15,9 @@ final class WatchListViewModel {
 
     var action: ((Action) -> Void)?
 
-    private var currentWatchlist: WatchlistPresentable?
-
-    private var watchlists: [Watchlist] = []
-
     private let getActiveWatchlistUseCase: GetActiveWatchlistUseCaseProtocol
+
+    private var currentWatchlist: WatchlistPresentable?
 
     init(getActiveWatchlistUseCase: GetActiveWatchlistUseCaseProtocol) {
         self.getActiveWatchlistUseCase = getActiveWatchlistUseCase
