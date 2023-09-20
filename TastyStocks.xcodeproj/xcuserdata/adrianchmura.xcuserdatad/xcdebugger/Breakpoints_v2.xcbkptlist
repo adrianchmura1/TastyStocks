@@ -80,6 +80,21 @@
                   endingLineNumber = "26"
                   offsetFromSymbolStart = "84">
                </Location>
+               <Location
+                  uuid = "6F4B547A-DF49-46DC-A76C-75DAF50CECA4 - 1144c3b1a339cbe4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TastyStocks.ViewController.init() -&gt; TastyStocks.ViewController"
+                  moduleName = "TastyStocks"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianchmura/devs/TastyStocks/TastyStocks/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "84">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -126,6 +141,21 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "19"
                   endingLineNumber = "19"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "48F1516A-2B01-4E0B-A096-146520C1EB4F - 7e7073394df6176c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TastyStocks.ViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "TastyStocks"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianchmura/devs/TastyStocks/TastyStocks/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
                   offsetFromSymbolStart = "36">
                </Location>
             </Locations>

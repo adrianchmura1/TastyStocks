@@ -7,6 +7,7 @@
 
 import UIKit
 import Coordinators
+import WatchlistDomain
 
 public final class WatchlistCoordinator: Coordinator {
     public var navigationController: UINavigationController
@@ -19,5 +20,9 @@ public final class WatchlistCoordinator: Coordinator {
     public func start() {
         // TODO: Implement watchlist
         print("[WatchlistCoordinator] start")
+
+        let watchlistViewController = WatchListViewController(viewModel: Resolver().watchlistViewModel)
+
+        navigationController.pushViewController(watchlistViewController, animated: false)
     }
 }
