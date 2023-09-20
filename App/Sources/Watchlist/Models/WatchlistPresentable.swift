@@ -9,10 +9,19 @@ import Foundation
 
 struct WatchlistPresentable {
     let id: String
-    var stocks: [String]
+    let name: String
+    var quotes: [QuotePresentable]
 
-    init(id: String, stocks: [String] = []) {
+    init(id: String, name: String, quotes: [QuotePresentable] = []) {
         self.id = id
-        self.stocks = stocks
+        self.name = name
+        self.quotes = quotes
     }
+}
+
+struct QuotePresentable {
+    let symbol: String
+    let askPrice: String
+    let bidPrice: String
+    let lastPrice: String
 }

@@ -10,7 +10,7 @@ import WatchlistDomain
 public final class InfrastructureAssembly {
     public init() {}
 
-    public func watchlistRepository() -> WatchlistRepositoryProtocol {
-        WatchlistRepository()
+    public func watchlistRepository() -> WatchlistDatabaseProtocol {
+        WatchlistDatabase()
     }
 }

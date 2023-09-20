@@ -19,7 +19,7 @@ final class WatchListTableViewDelegate: NSObject, UITableViewDelegate, UITableVi
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let instrumentName = viewModel.instrument(at: indexPath.row)
+        let instrumentName = viewModel.quote(at: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = instrumentName
         return cell

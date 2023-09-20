@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol WatchlistRepositoryProtocol: AnyObject {
+public protocol WatchlistDatabaseProtocol: AnyObject {
     var watchlists: [Watchlist] { get }
     var activeWatchlist: Watchlist? { get set }
 

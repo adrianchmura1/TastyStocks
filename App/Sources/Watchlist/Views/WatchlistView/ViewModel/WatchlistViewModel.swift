@@ -15,12 +15,12 @@ final class WatchListViewModel {
 
     var action: ((Action) -> Void)?
 
-    private let getActiveWatchlistUseCase: GetActiveWatchlistUseCaseProtocol
+    private let interactor: WatchlistInteractor
 
     private var currentWatchlist: WatchlistPresentable?
 
-    init(getActiveWatchlistUseCase: GetActiveWatchlistUseCaseProtocol) {
-        self.getActiveWatchlistUseCase = getActiveWatchlistUseCase
+    init(interactor: WatchlistInteractor) {
+        self.interactor = interactor
     }
 
     func onAppear() {
@@ -30,19 +30,21 @@ final class WatchListViewModel {
 
     func numberOfRowsInSection(_: Int) -> Int {
         guard let currentWatchlist else { return 0 }
-        return currentWatchlist.stocks.count
+        return currentWatchlist.quotes.count
     }
 
-    func instrument(at index: Int) -> String {
+    func quote(at index: Int) -> String {
         guard let currentWatchlist else {
             fatalError("Cannot access any instrument data as current watchlist is nil")
         }
-        return currentWatchlist.stocks[index]
+        return currentWatchlist.quotes[index].symbol
     }
 
     private func reloadActiveWatchlist() {
-        currentWatchlist = getActiveWatchlistUseCase.getActiveWatchlist().map {
-            WatchlistPresentable(id: $0.id, stocks: $0.stocks)
+        currentWatchlist = interactor.getActiveWatchlist().map {
+            WatchlistPresentable(id: $0.id, name: $0.name, quotes: $0.quotes.map { quote in
+                QuotePresentable(symbol: quote.symbol, askPrice: "0", bidPrice: "0", lastPrice: "0")
+            })
         }
         action?(.reload)
     }

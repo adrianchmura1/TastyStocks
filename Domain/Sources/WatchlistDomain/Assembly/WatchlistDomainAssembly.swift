@@ -10,7 +10,7 @@ import Foundation
 public final class WatchlistDomainAssembly {
     public init() {}
 
-    public func getActiveWatchlistUseCase(repository: WatchlistRepositoryProtocol) -> GetActiveWatchlistUseCaseProtocol {
+    public func getActiveWatchlistUseCase(repository: WatchlistDatabaseProtocol) -> GetActiveWatchlistUseCaseProtocol {
         GetActiveWatchlistUseCase(repository: repository)
     }
 }

@@ -12,9 +12,11 @@ public protocol GetActiveWatchlistUseCaseProtocol: AnyObject {
 }
 
 final class GetActiveWatchlistUseCase: GetActiveWatchlistUseCaseProtocol {
-    private let repository: WatchlistRepositoryProtocol
+    private static let initialWatchlistName = "My first list"
 
-    init(repository: WatchlistRepositoryProtocol) {
+    private let repository: WatchlistDatabaseProtocol
+
+    init(repository: WatchlistDatabaseProtocol) {
         self.repository = repository
     }
 
@@ -22,7 +24,8 @@ final class GetActiveWatchlistUseCase: GetActiveWatchlistUseCaseProtocol {
         if let activeWatchlist = repository.activeWatchlist {
             return activeWatchlist
         } else {
-            let initialWatchlist = Watchlist(id: UUID().uuidString, stocks: ["AAPL", "MSFT", "GOOG"])
+            let quotes = [Quote(symbol: "AAPL"), Quote(symbol: "MSFT"), Quote(symbol: "GOOG")]
+            let initialWatchlist = Watchlist(id: UUID().uuidString, name: Self.initialWatchlistName, quotes: quotes)
             repository.addWatchlist(initialWatchlist)
             repository.activeWatchlist = initialWatchlist
             return initialWatchlist

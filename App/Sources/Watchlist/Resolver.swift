@@ -12,6 +12,7 @@ final class Resolver {
     var watchlistViewModel: WatchListViewModel {
         let repository = InfrastructureAssembly().watchlistRepository()
         let getActiveWatchlistUseCase = WatchlistDomainAssembly().getActiveWatchlistUseCase(repository: repository)
-        return WatchListViewModel(getActiveWatchlistUseCase: getActiveWatchlistUseCase)
+        let interactor = WatchlistInteractor(getActiveWatchlistUseCase: getActiveWatchlistUseCase)
+        return WatchListViewModel(interactor: interactor)
     }
 }
