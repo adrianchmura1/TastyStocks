@@ -6,11 +6,20 @@
 //
 
 import WatchlistDomain
+import Foundation
 
 public final class InfrastructureAssembly {
     public init() {}
 
-    public func watchlistRepository() -> WatchlistDatabaseProtocol {
-        WatchlistDatabase()
+    public func watchlistRepository() -> WatchlistRepositoryProtocol {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+
+        let networkService = NetworkService(decoder: decoder)
+
+        return WatchlistRepository(
+            database: WatchlistDatabase(),
+            restService: WatchlistRestService(networkService: networkService)
+        )
     }
 }

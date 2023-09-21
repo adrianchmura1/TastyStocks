@@ -19,9 +19,11 @@ final class WatchListTableViewDelegate: NSObject, UITableViewDelegate, UITableVi
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let instrumentName = viewModel.quote(at: indexPath.row)
+        let quote = viewModel.quote(at: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = instrumentName
+        if let quoteCell = cell as? WatchlistTableViewQuoteCell {
+            quoteCell.configure(with: quote.symbol, lastPrice: quote.lastPrice, bidPrice: quote.bidPrice, askPrice: quote.askPrice)
+        }
         return cell
     }
 }

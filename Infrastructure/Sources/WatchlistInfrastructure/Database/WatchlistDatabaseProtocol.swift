@@ -2,12 +2,12 @@
 //  File.swift
 //  
 //
-//  Created by Adrian Chmura on 20/09/2023.
+//  Created by Adrian Chmura on 21/09/2023.
 //
 
-import Foundation
+import WatchlistDomain
 
-public protocol WatchlistDatabaseProtocol: AnyObject {
+protocol WatchlistDatabaseProtocol: AnyObject {
     var watchlists: [Watchlist] { get }
     var activeWatchlist: Watchlist? { get set }
 

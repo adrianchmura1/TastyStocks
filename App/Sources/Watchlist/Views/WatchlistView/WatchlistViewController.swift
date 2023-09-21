@@ -44,7 +44,7 @@ final class WatchListViewController: UIViewController {
         tableView = UITableView(frame: view.bounds, style: .plain)
         tableView.delegate = tableViewDelegate
         tableView.dataSource = tableViewDelegate
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(WatchlistTableViewQuoteCell.self, forCellReuseIdentifier: "Cell")
     }
 
     private func layout() {

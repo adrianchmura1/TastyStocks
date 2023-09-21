@@ -25,7 +25,6 @@ final class WatchListViewModel {
 
     func onAppear() {
         reloadActiveWatchlist()
-        action?(.reload)
     }
 
     func numberOfRowsInSection(_: Int) -> Int {
@@ -33,19 +32,37 @@ final class WatchListViewModel {
         return currentWatchlist.quotes.count
     }
 
-    func quote(at index: Int) -> String {
+    func quote(at index: Int) -> QuotePresentable {
         guard let currentWatchlist else {
             fatalError("Cannot access any instrument data as current watchlist is nil")
         }
-        return currentWatchlist.quotes[index].symbol
+        return currentWatchlist.quotes[index]
     }
 
     private func reloadActiveWatchlist() {
-        currentWatchlist = interactor.getActiveWatchlist().map {
-            WatchlistPresentable(id: $0.id, name: $0.name, quotes: $0.quotes.map { quote in
-                QuotePresentable(symbol: quote.symbol, askPrice: "0", bidPrice: "0", lastPrice: "0")
-            })
+        DispatchQueue.global().async {
+            self.interactor.getActiveWatchlist { [weak self] result in
+                switch result {
+                case .success(let watchlist):
+                    guard let self else { return }
+                    self.currentWatchlist = watchlist.map {
+                        WatchlistPresentable(id: $0.id, name: $0.name, quotes: $0.quotes.map { quote in
+                            QuotePresentable(
+                                symbol: quote.symbol,
+                                askPrice: quote.ask ?? "N/A",
+                                bidPrice: quote.bid ?? "N/A",
+                                lastPrice: quote.last ?? "N/A"
+                            )
+                        })
+                    }
+                    DispatchQueue.main.async {
+                        self.action?(.reload)
+                    }
+                case .failure(let error):
+                    print(error)
+                    // TODO: Show error state
+                }
+            }
         }
-        action?(.reload)
     }
 }

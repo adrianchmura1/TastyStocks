@@ -17,15 +17,19 @@ public struct Watchlist {
         self.name = name
         self.quotes = quotes
     }
+
+    public mutating func update(quotes newQuotes: [Quote]) {
+        quotes = newQuotes
+    }
 }
 
 public struct Quote {
     public let symbol: String
-    public let bid: String
-    public let ask: String
-    public let last: String
+    public let bid: String?
+    public let ask: String?
+    public let last: String?
 
-    public init(symbol: String, bid: String = "", ask: String = "", last: String = "") {
+    public init(symbol: String, bid: String? = nil, ask: String? = nil, last: String? = nil) {
         self.symbol = symbol
         self.bid = bid
         self.ask = ask

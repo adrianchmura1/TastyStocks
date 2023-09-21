@@ -15,7 +15,7 @@ struct WatchlistDTO: Codable {
 
 struct QuoteDTO: Codable {
     let symbol: String
-    let bid: String
-    let ask: String
-    let last: String
+    let bid: String?
+    let ask: String?
+    let last: String?
 }

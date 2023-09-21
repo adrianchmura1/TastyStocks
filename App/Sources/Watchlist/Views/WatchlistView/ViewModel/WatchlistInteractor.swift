@@ -14,7 +14,7 @@ final class WatchlistInteractor {
         self.getActiveWatchlistUseCase = getActiveWatchlistUseCase
     }
 
-    func getActiveWatchlist() -> Watchlist? {
-        return getActiveWatchlistUseCase.getActiveWatchlist()
+    func getActiveWatchlist(completion: @escaping (Result<Watchlist?, Error>) -> Void) {
+        getActiveWatchlistUseCase.execute(completion: completion)
     }
 }
