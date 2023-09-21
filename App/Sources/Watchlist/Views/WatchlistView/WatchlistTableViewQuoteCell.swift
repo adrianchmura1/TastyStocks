@@ -32,6 +32,7 @@ final class WatchlistTableViewQuoteCell: UITableViewCell {
     }
 
     private func setupUI() {
+        contentView.backgroundColor = .clear
         contentView.addSubview(symbolLabel)
         contentView.addSubview(lastPriceLabel)
         contentView.addSubview(bidPriceLabel)
@@ -51,17 +52,20 @@ final class WatchlistTableViewQuoteCell: UITableViewCell {
 
         lastPriceLabel.snp.makeConstraints { make in
             make.leading.equalTo(symbolLabel.snp.trailing).offset(10)
+            make.width.equalTo(70)
             make.centerY.equalToSuperview()
         }
 
         bidPriceLabel.snp.makeConstraints { make in
             make.leading.equalTo(lastPriceLabel.snp.trailing).offset(10)
+            make.width.equalTo(70)
             make.centerY.equalToSuperview()
         }
 
         askPriceLabel.snp.makeConstraints { make in
             make.leading.equalTo(bidPriceLabel.snp.trailing).offset(10)
             make.trailing.equalToSuperview().inset(10)
+            make.width.equalTo(70)
             make.centerY.equalToSuperview()
         }
     }

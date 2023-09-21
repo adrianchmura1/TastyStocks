@@ -14,6 +14,10 @@ final class WatchListTableViewDelegate: NSObject, UITableViewDelegate, UITableVi
         self.viewModel = viewModel
     }
 
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRowsInSection(section)
     }
@@ -25,5 +29,20 @@ final class WatchListTableViewDelegate: NSObject, UITableViewDelegate, UITableVi
             quoteCell.configure(with: quote.symbol, lastPrice: quote.lastPrice, bidPrice: quote.bidPrice, askPrice: quote.askPrice)
         }
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 40
+        }
+        return 0
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            return HeaderView()
+        }
+
+        return nil
     }
 }
