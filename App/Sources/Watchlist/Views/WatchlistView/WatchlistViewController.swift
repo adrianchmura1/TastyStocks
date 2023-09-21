@@ -39,6 +39,11 @@ final class WatchListViewController: UIViewController {
         viewModel.onAppear()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel.onDisappear()
+    }
+
     private func setupTable() {
         tableViewDelegate = WatchListTableViewDelegate(viewModel: viewModel)
         tableView = UITableView(frame: view.bounds, style: .plain)

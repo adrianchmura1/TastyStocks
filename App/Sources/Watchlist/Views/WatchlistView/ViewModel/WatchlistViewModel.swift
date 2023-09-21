@@ -16,6 +16,7 @@ final class WatchListViewModel {
     var action: ((Action) -> Void)?
 
     private let interactor: WatchlistInteractor
+    private var timer: Timer?
 
     private var currentWatchlist: WatchlistPresentable?
 
@@ -24,7 +25,14 @@ final class WatchListViewModel {
     }
 
     func onAppear() {
-        reloadActiveWatchlist()
+        timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
+            self?.reloadActiveWatchlist()
+        }
+    }
+
+    func onDisappear() {
+        timer?.invalidate()
+        timer = nil
     }
 
     func numberOfRowsInSection(_: Int) -> Int {
@@ -44,18 +52,12 @@ final class WatchListViewModel {
             self.interactor.getActiveWatchlist { [weak self] result in
                 switch result {
                 case .success(let watchlist):
-                    guard let self else { return }
-                    self.currentWatchlist = watchlist.map {
-                        WatchlistPresentable(id: $0.id, name: $0.name, quotes: $0.quotes.map { quote in
-                            QuotePresentable(
-                                symbol: quote.symbol,
-                                askPrice: quote.ask ?? "N/A",
-                                bidPrice: quote.bid ?? "N/A",
-                                lastPrice: quote.last ?? "N/A"
-                            )
-                        })
-                    }
+                    guard let self, let watchlist else { return }
+
+                    let mappedWatchlist = self.mapToWatchlistPresentable(watchlist: watchlist)
+
                     DispatchQueue.main.async {
+                        self.currentWatchlist = mappedWatchlist
                         self.action?(.reload)
                     }
                 case .failure(let error):
@@ -64,5 +66,24 @@ final class WatchListViewModel {
                 }
             }
         }
+    }
+
+    private func mapToWatchlistPresentable(watchlist: Watchlist) -> WatchlistPresentable {
+        let sortedQuotes = watchlist.quotes.map { quote in
+            QuotePresentable(
+                symbol: quote.symbol,
+                askPrice: quote.ask ?? "N/A",
+                bidPrice: quote.bid ?? "N/A",
+                lastPrice: quote.last ?? "N/A"
+            )
+        }.sorted(by: { (quote1, quote2) -> Bool in
+            return quote1.symbol < quote2.symbol
+        })
+
+        return WatchlistPresentable(
+            id: watchlist.id,
+            name: watchlist.name,
+            quotes: sortedQuotes
+        )
     }
 }
