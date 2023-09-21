@@ -33,17 +33,17 @@ final class HeaderView: UIView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
         latestLabel.text = "LATEST"
-        latestLabel.textAlignment = .center
+        latestLabel.textAlignment = .right
         latestLabel.font = UIFont.boldSystemFont(ofSize: 14)
         latestLabel.translatesAutoresizingMaskIntoConstraints = false
 
         bidLabel.text = "BID"
-        bidLabel.textAlignment = .center
+        bidLabel.textAlignment = .right
         bidLabel.font = UIFont.boldSystemFont(ofSize: 14)
         bidLabel.translatesAutoresizingMaskIntoConstraints = false
 
         askLabel.text = "ASK"
-        askLabel.textAlignment = .center
+        askLabel.textAlignment = .right
         askLabel.font = UIFont.boldSystemFont(ofSize: 14)
         askLabel.translatesAutoresizingMaskIntoConstraints = false
 

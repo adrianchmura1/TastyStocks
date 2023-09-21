@@ -42,6 +42,11 @@ final class WatchlistTableViewQuoteCell: UITableViewCell {
         lastPriceLabel.font = UIFont.systemFont(ofSize: 16)
         bidPriceLabel.font = UIFont.systemFont(ofSize: 16)
         askPriceLabel.font = UIFont.systemFont(ofSize: 16)
+
+        symbolLabel.textAlignment = .left
+        lastPriceLabel.textAlignment = .right
+        bidPriceLabel.textAlignment = .right
+        askPriceLabel.textAlignment = .right
     }
 
     private func setupConstraints() {
