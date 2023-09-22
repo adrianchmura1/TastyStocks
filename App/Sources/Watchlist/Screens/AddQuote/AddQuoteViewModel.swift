@@ -11,6 +11,8 @@ final class AddQuoteViewModel {
     enum Action {
         case reload
         case finished
+        case startLoading
+        case finishLoading
     }
 
     var action: ((Action) -> Void)?
@@ -18,15 +20,35 @@ final class AddQuoteViewModel {
 
     private let interactor: AddQuoteInteractor
 
-    private var stockQuotes: [StockQuote] = dummyStockQuotes
-
     init(interactor: AddQuoteInteractor) {
         self.interactor = interactor
     }
 
     func filterStockQuotes(with searchText: String) {
-        filteredQuotes = stockQuotes.filter { $0.symbol.contains(searchText.uppercased()) }
-        action?(.reload)
+        guard !searchText.isEmpty else {
+            filteredQuotes = []
+            self.action?(.reload)
+            return
+        }
+
+        action?(.startLoading)
+        DispatchQueue.global().async {
+            self.interactor.search(text: searchText) { [weak self] result in
+                guard let self else { return }
+                switch result {
+                case .success(let results):
+                    self.filteredQuotes = results.map { StockQuote(symbol: $0.symbol, name: $0.name) }
+                case .failure:
+                    // TODO: Show error state
+                    break
+                }
+
+                DispatchQueue.main.async {
+                    self.action?(.reload)
+                    self.action?(.finishLoading)
+                }
+            }
+        }
     }
 
     func didSelectRow(at indexPath: IndexPath) {

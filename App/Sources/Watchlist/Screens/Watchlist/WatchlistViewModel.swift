@@ -18,8 +18,8 @@ final class WatchListViewModel {
     var action: ((Action) -> Void)?
 
     private let interactor: WatchlistInteractor
-    private var timer: Timer?
 
+    private var timer: Timer?
     private var currentWatchlist: WatchlistPresentable?
 
     init(interactor: WatchlistInteractor) {

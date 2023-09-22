@@ -22,4 +22,15 @@ public final class InfrastructureAssembly {
             restService: WatchlistRestService(networkService: networkService)
         )
     }
+
+    public func symbolsRepository() -> SymbolsRepositoryProtocol {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+
+        let networkService = NetworkService(decoder: decoder)
+
+        return SymbolsRepository(
+            restService: SymbolsRestService(networkService: networkService)
+        )
+    }
 }

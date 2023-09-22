@@ -14,8 +14,8 @@ public final class WatchlistDomainAssembly {
         GetActiveWatchlistUseCase(repository: repository)
     }
 
-    public func symbolSearchUseCase() -> SearchQuotesUseCaseProtocol {
-        SearchQuotesUseCase()
+    public func symbolSearchUseCase(repository: SymbolsRepositoryProtocol) -> SearchQuotesUseCaseProtocol {
+        SearchQuotesUseCase(symbolsRepository: repository)
     }
 
     public func addSymbolUseCase(repository: WatchlistRepositoryProtocol) -> AddSymbolUseCaseProtocol {

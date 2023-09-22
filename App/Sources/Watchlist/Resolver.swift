@@ -17,13 +17,14 @@ final class Resolver {
     }
 
     var addQuoteViewModel: AddQuoteViewModel {
-        let repository = InfrastructureAssembly().watchlistRepository()
+        let watchlistRepository = InfrastructureAssembly().watchlistRepository()
+        let symbolsRepository = InfrastructureAssembly().symbolsRepository()
 
         let watchlistDomainAssembly = WatchlistDomainAssembly()
 
         let interactor = AddQuoteInteractor(
-            searchQuotesUseCase: watchlistDomainAssembly.symbolSearchUseCase(),
-            addSymbolUseCaseProtocol: watchlistDomainAssembly.addSymbolUseCase(repository: repository)
+            searchQuotesUseCase: watchlistDomainAssembly.symbolSearchUseCase(repository: symbolsRepository),
+            addSymbolUseCaseProtocol: watchlistDomainAssembly.addSymbolUseCase(repository: watchlistRepository)
         )
 
         return AddQuoteViewModel(interactor: interactor)

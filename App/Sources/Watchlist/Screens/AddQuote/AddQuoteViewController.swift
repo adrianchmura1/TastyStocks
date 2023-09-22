@@ -26,6 +26,13 @@ final class AddQuoteViewController: UIViewController {
         AddQuoteTableViewDelegate(viewModel: viewModel)
     }()
 
+    private lazy var loadingSpinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.color = .gray
+        spinner.hidesWhenStopped = true
+        return spinner
+    }()
+
     private let viewModel: AddQuoteViewModel
 
     init(viewModel: AddQuoteViewModel) {
@@ -47,14 +54,24 @@ final class AddQuoteViewController: UIViewController {
                 self?.tableView.reloadData()
             case .finished:
                 self?.action?(.finished)
+            case .startLoading:
+                self?.setLoading(true)
+            case .finishLoading:
+                self?.setLoading(false)
             }
         }
+    }
+
+    private func setLoading(_ loading: Bool) {
+        loadingSpinner.isHidden = !loading
+        tableView.isHidden = loading
     }
 
     private func setupUI() {
         view.backgroundColor = .white
         setupSearchBar()
         setupTableView()
+        setupSpinner()
     }
 
     private func setupSearchBar() {
@@ -79,32 +96,17 @@ final class AddQuoteViewController: UIViewController {
             make.leading.trailing.bottom.equalToSuperview()
         }
     }
+
+    private func setupSpinner() {
+        view.addSubview(loadingSpinner)
+
+        loadingSpinner.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
 }
 
 struct StockQuote {
     let symbol: String
     let name: String
 }
-
-let dummyStockQuotes: [StockQuote] = [
-    StockQuote(symbol: "TSLA", name: "Tesla, Inc."),
-    StockQuote(symbol: "FB", name: "Meta Platforms, Inc."),
-    StockQuote(symbol: "NVDA", name: "NVIDIA Corporation"),
-    StockQuote(symbol: "BRK.B", name: "Berkshire Hathaway Inc."),
-    StockQuote(symbol: "JPM", name: "JPMorgan Chase & Co."),
-    StockQuote(symbol: "V", name: "Visa Inc."),
-    StockQuote(symbol: "JNJ", name: "Johnson & Johnson"),
-    StockQuote(symbol: "PG", name: "Procter & Gamble Co."),
-    StockQuote(symbol: "UNH", name: "UnitedHealth Group Inc."),
-    StockQuote(symbol: "BAC", name: "Bank of America Corp."),
-    StockQuote(symbol: "GOOG", name: "Alphabet Inc."),
-    StockQuote(symbol: "MA", name: "Mastercard Inc."),
-    StockQuote(symbol: "AAPL", name: "Apple Inc."),
-    StockQuote(symbol: "CSCO", name: "Cisco Systems, Inc."),
-    StockQuote(symbol: "INTC", name: "Intel Corporation"),
-    StockQuote(symbol: "T", name: "AT&T Inc."),
-    StockQuote(symbol: "DIS", name: "The Walt Disney Company"),
-    StockQuote(symbol: "KO", name: "The Coca-Cola Company"),
-    StockQuote(symbol: "PEP", name: "PepsiCo, Inc."),
-    StockQuote(symbol: "WMT", name: "Walmart Inc.")
-]
