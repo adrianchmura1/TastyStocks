@@ -21,6 +21,10 @@ public struct Watchlist {
     public mutating func update(quotes newQuotes: [Quote]) {
         quotes = newQuotes
     }
+
+    public mutating func add(quote: Quote) {
+        quotes.append(quote)
+    }
 }
 
 public struct Quote {

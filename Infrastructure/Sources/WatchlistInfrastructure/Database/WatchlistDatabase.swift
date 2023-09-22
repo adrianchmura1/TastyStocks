@@ -49,4 +49,19 @@ final class WatchlistDatabase: WatchlistDatabaseProtocol {
         updatedWatchlists.append(watchlist)
         watchlists = updatedWatchlists
     }
+
+    func addToActive(symbol: String) {
+        guard let activeWatchlist else { return }
+
+        var active = activeWatchlist
+        active.add(quote: Quote(symbol: symbol))
+
+        var updatedWatchlists = watchlists
+
+        if let activeIndex = updatedWatchlists.firstIndex(where: { $0.id == active.id }) {
+            updatedWatchlists[activeIndex] = active
+        }
+
+        watchlists = updatedWatchlists
+    }
 }

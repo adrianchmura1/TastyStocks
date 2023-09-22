@@ -12,4 +12,5 @@ protocol WatchlistDatabaseProtocol: AnyObject {
     var activeWatchlist: Watchlist? { get set }
 
     func addWatchlist(_ watchlist: Watchlist)
+    func addToActive(symbol: String)
 }

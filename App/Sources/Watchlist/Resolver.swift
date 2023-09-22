@@ -15,4 +15,17 @@ final class Resolver {
         let interactor = WatchlistInteractor(getActiveWatchlistUseCase: getActiveWatchlistUseCase)
         return WatchListViewModel(interactor: interactor)
     }
+
+    var addQuoteViewModel: AddQuoteViewModel {
+        let repository = InfrastructureAssembly().watchlistRepository()
+
+        let watchlistDomainAssembly = WatchlistDomainAssembly()
+
+        let interactor = AddQuoteInteractor(
+            searchQuotesUseCase: watchlistDomainAssembly.symbolSearchUseCase(),
+            addSymbolUseCaseProtocol: watchlistDomainAssembly.addSymbolUseCase(repository: repository)
+        )
+
+        return AddQuoteViewModel(interactor: interactor)
+    }
 }

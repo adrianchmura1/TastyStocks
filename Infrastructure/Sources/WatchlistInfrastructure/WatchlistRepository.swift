@@ -43,7 +43,7 @@ final class WatchlistRepository: WatchlistRepositoryProtocol {
                 completion(watchlist)
             case .failure(let error):
                 print(error)
-                // change return type to result and return error in result
+                // change return type to result and return error     in result
             }
         }
     }
@@ -53,6 +53,10 @@ final class WatchlistRepository: WatchlistRepositoryProtocol {
         database.addWatchlist(watchlist)
         database.activeWatchlist = watchlist
         fetchActiveWatchlist(completion: completion)
+    }
+
+    func addToActiveWatchlist(symbol: String) {
+        database.addToActive(symbol: symbol)
     }
 }
 

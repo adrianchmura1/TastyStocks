@@ -11,6 +11,8 @@ import WatchlistDomain
 final class WatchListViewModel {
     enum Action {
         case reload
+        case showLoading
+        case hideLoading
     }
 
     var action: ((Action) -> Void)?
@@ -25,6 +27,9 @@ final class WatchListViewModel {
     }
 
     func onAppear() {
+        action?(.showLoading)
+        reloadActiveWatchlist()
+
         timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
             self?.reloadActiveWatchlist()
         }
@@ -59,6 +64,7 @@ final class WatchListViewModel {
                     DispatchQueue.main.async {
                         self.currentWatchlist = mappedWatchlist
                         self.action?(.reload)
+                        self.action?(.hideLoading)
                     }
                 case .failure(let error):
                     print(error)
