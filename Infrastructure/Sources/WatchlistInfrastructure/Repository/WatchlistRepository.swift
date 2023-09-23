@@ -12,6 +12,10 @@ final class WatchlistRepository: WatchlistRepositoryProtocol {
         database.watchlists
     }
 
+    var activeWatchlistId: String? {
+        database.activeWatchlistId
+    }
+
     private let database: WatchlistDatabaseProtocol
     private let restService: WatchlistRestServiceProtocol
 

@@ -39,7 +39,8 @@ final class Resolver {
                 addWatchlistUseCase: watchlistDomainAssembly.addWatchlistUseCase(repository: watchlistRepository),
                 getWatchlistsUseCase: watchlistDomainAssembly.getWatchlistsUseCase(repository: watchlistRepository),
                 switchWatchlistUseCase: watchlistDomainAssembly.switchWatchlistUseCase(repository: watchlistRepository),
-                removeWatchlistUseCase: watchlistDomainAssembly.removeWatchlistUseCase(repository: watchlistRepository))
+                removeWatchlistUseCase: watchlistDomainAssembly.removeWatchlistUseCase(repository: watchlistRepository),
+                getActiveWatchlistIdUseCase: watchlistDomainAssembly.getActiveWatchlistIdUseCase(repository: watchlistRepository))
         )
     }
 }

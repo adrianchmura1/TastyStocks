@@ -58,7 +58,7 @@ final class WatchlistEditViewController: UIViewController {
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "WatchlistCell")
+        tableView.register(WatchlistTableViewCell.self, forCellReuseIdentifier: "WatchlistCell")
 
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -92,9 +92,10 @@ extension WatchlistEditViewController: UITableViewDataSource, UITableViewDelegat
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WatchlistCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WatchlistCell", for: indexPath) as! WatchlistTableViewCell
         let watchlist = viewModel.watchlist(at: indexPath.row)
         cell.textLabel?.text = watchlist.name
+        cell.isActive = viewModel.showTicker(for: indexPath.row)
         return cell
     }
 
@@ -107,4 +108,23 @@ extension WatchlistEditViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.didSelectRow(at: indexPath.row)
     }
+}
+
+final class WatchlistTableViewCell: UITableViewCell {
+    var isActive: Bool = false {
+        didSet {
+            accessoryType = isActive ? .checkmark : .none
+        }
+    }
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupUI()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setupUI() {}
 }

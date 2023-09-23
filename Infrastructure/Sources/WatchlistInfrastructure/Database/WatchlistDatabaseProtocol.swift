@@ -10,6 +10,7 @@ import WatchlistDomain
 protocol WatchlistDatabaseProtocol: AnyObject {
     var watchlists: [Watchlist] { get }
     var activeWatchlist: Watchlist? { get }
+    var activeWatchlistId: String? { get }
 
     func addWatchlist(_ watchlist: Watchlist)
     func addToActive(symbol: String)

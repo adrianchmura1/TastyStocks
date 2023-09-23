@@ -9,6 +9,7 @@ import Foundation
 
 public protocol WatchlistRepositoryProtocol: AnyObject {
     var watchlists: [Watchlist] { get }
+    var activeWatchlistId: String? { get }
 
     func fetchActiveWatchlist(completion: @escaping (WatchlistDomain.Watchlist?) -> Void)
     func addWatchlist(_ watchlist: WatchlistDomain.Watchlist)

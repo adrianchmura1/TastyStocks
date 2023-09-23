@@ -13,6 +13,7 @@ final class WatchListViewModel {
         case reload
         case showLoading
         case hideLoading
+        case changeNavigationTitle(String)
     }
 
     var action: ((Action) -> Void)?
@@ -63,6 +64,7 @@ final class WatchListViewModel {
 
                     DispatchQueue.main.async {
                         self.currentWatchlist = mappedWatchlist
+                        self.action?(.changeNavigationTitle(mappedWatchlist.name))
                         self.action?(.reload)
                         self.action?(.hideLoading)
                     }

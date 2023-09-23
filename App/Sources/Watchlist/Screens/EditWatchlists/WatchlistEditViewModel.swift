@@ -55,6 +55,11 @@ final class WatchlistEditViewModel {
         action?(.finished)
     }
 
+    func showTicker(for index: Int) -> Bool {
+        let presentable = watchlist(at: index)
+        return presentable.id == interactor.activeWatchListId
+    }
+
     private func reloadWatchlists() {
         watchlists = interactor.watchlists.map { WatchlistNamePresentable(id: $0.id, name: $0.name) }
     }

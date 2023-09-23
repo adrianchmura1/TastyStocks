@@ -61,6 +61,8 @@ final class WatchListViewController: UIViewController {
                 self?.setLoading(true)
             case .hideLoading:
                 self?.setLoading(false)
+            case .changeNavigationTitle(let title):
+                self?.navigationItem.title = title
             }
         }
 

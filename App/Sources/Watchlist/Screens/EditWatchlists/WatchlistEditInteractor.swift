@@ -12,21 +12,28 @@ final class WatchlistEditInteractor {
         getWatchlistsUseCase.execute()
     }
 
+    var activeWatchListId: String? {
+        getActiveWatchlistIdUseCase.execute()
+    }
+
     private let addWatchlistUseCase: AddWatchlistUseCaseProtocol
     private let getWatchlistsUseCase: GetWatchlistsUseCaseProtocol
     private let switchWatchlistUseCase: SwitchWatchlistUseCaseProtocol
     private let removeWatchlistUseCase: RemoveWatchlistUseCaseProtocol
+    private let getActiveWatchlistIdUseCase: GetActiveWatchlistIdUseCaseProtocol
 
     init(
         addWatchlistUseCase: AddWatchlistUseCaseProtocol,
         getWatchlistsUseCase: GetWatchlistsUseCaseProtocol,
         switchWatchlistUseCase: SwitchWatchlistUseCaseProtocol,
-        removeWatchlistUseCase: RemoveWatchlistUseCaseProtocol
+        removeWatchlistUseCase: RemoveWatchlistUseCaseProtocol,
+        getActiveWatchlistIdUseCase: GetActiveWatchlistIdUseCaseProtocol
     ) {
         self.addWatchlistUseCase = addWatchlistUseCase
         self.getWatchlistsUseCase = getWatchlistsUseCase
         self.switchWatchlistUseCase = switchWatchlistUseCase
         self.removeWatchlistUseCase = removeWatchlistUseCase
+        self.getActiveWatchlistIdUseCase = getActiveWatchlistIdUseCase
     }
 
     func add(watchlist: Watchlist) {

@@ -9,6 +9,7 @@ import WatchlistDomain
 import Foundation
 
 final class WatchlistDatabase: WatchlistDatabaseProtocol {
+
     private let watchlistsKey = "Watchlists"
     private let activeWatchlistIDKey = "ActiveWatchlistID"
 
@@ -17,7 +18,6 @@ final class WatchlistDatabase: WatchlistDatabaseProtocol {
     init(userDefaults: UserDefaults = .standard) {
         self.userDefaults = userDefaults
     }
-
     var watchlists: [Watchlist] {
         get {
             if let data = userDefaults.data(forKey: watchlistsKey),
@@ -32,6 +32,10 @@ final class WatchlistDatabase: WatchlistDatabaseProtocol {
                 userDefaults.set(data, forKey: watchlistsKey)
             }
         }
+    }
+
+    var activeWatchlistId: String? {
+        activeWatchlist?.id
     }
 
     var activeWatchlist: Watchlist? {

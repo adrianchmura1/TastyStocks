@@ -29,7 +29,6 @@ final class GetActiveWatchlistUseCase: GetActiveWatchlistUseCaseProtocol {
                 let initialWatchlist = Watchlist(name: Self.initialWatchlistName, quotes: quotes)
 
                 self?.repository.addWatchlist(initialWatchlist)
-
                 self?.repository.fetchActiveWatchlist {  watchlist in
                     completion(.success(watchlist))
                 }
