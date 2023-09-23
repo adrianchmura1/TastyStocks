@@ -14,6 +14,7 @@ protocol WatchlistDatabaseProtocol: AnyObject {
 
     func addWatchlist(_ watchlist: Watchlist)
     func addToActive(symbol: String)
+    func removeFromActive(symbol: String)
     func removeWatchlist(id: String)
     func setActive(id: String)
 }

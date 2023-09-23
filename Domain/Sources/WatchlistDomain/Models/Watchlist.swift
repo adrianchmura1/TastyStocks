@@ -25,6 +25,12 @@ public struct Watchlist {
     public mutating func add(quote: Quote) {
         quotes.append(quote)
     }
+
+    public mutating func remove(symbol: String) {
+        quotes.removeAll(where: {
+            $0.symbol == symbol
+        })
+    }
 }
 
 public struct Quote {

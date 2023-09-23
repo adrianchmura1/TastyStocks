@@ -45,4 +45,10 @@ final class WatchListTableViewDelegate: NSObject, UITableViewDelegate, UITableVi
 
         return nil
     }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            viewModel.deleteRowTapped(at: indexPath.row)
+        }
+    }
 }

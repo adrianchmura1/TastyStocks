@@ -18,6 +18,7 @@ final class WatchlistDatabase: WatchlistDatabaseProtocol {
     init(userDefaults: UserDefaults = .standard) {
         self.userDefaults = userDefaults
     }
+
     var watchlists: [Watchlist] {
         get {
             if let data = userDefaults.data(forKey: watchlistsKey),
@@ -68,6 +69,21 @@ final class WatchlistDatabase: WatchlistDatabaseProtocol {
 
         var active = activeWatchlist
         active.add(quote: Quote(symbol: symbol))
+
+        var updatedWatchlists = watchlists
+
+        if let activeIndex = updatedWatchlists.firstIndex(where: { $0.id == active.id }) {
+            updatedWatchlists[activeIndex] = active
+        }
+
+        watchlists = updatedWatchlists
+    }
+
+    func removeFromActive(symbol: String) {
+        guard let activeWatchlist else { return }
+
+        var active = activeWatchlist
+        active.remove(symbol: symbol)
 
         var updatedWatchlists = watchlists
 

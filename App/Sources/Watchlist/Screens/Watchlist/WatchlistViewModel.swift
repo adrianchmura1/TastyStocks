@@ -53,6 +53,11 @@ final class WatchListViewModel {
         return currentWatchlist.quotes[index]
     }
 
+    func deleteRowTapped(at index: Int) {
+        interactor.removeFromActive(symbol: quote(at: index).symbol)
+        reloadActiveWatchlist()
+    }
+
     private func reloadActiveWatchlist() {
         DispatchQueue.global().async {
             self.interactor.getActiveWatchlist { [weak self] result in

@@ -66,6 +66,10 @@ final class WatchlistRepository: WatchlistRepositoryProtocol {
         database.addToActive(symbol: symbol)
     }
 
+    func removeFromActive(symbol: String) {
+        database.removeFromActive(symbol: symbol)
+    }
+
     func removeWatchlist(id: String) {
         database.removeWatchlist(id: id)
     }
