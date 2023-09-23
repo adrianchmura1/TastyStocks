@@ -35,18 +35,27 @@ final class WatchlistDatabase: WatchlistDatabaseProtocol {
     }
 
     var activeWatchlist: Watchlist? {
-        get {
-            let activeWatchlistID = userDefaults.string(forKey: activeWatchlistIDKey)
-            return watchlists.first { $0.id == activeWatchlistID }
-        }
-        set {
-            userDefaults.set(newValue?.id, forKey: activeWatchlistIDKey)
-        }
+        let activeWatchlistID = userDefaults.string(forKey: activeWatchlistIDKey)
+        return watchlists.first { $0.id == activeWatchlistID }
     }
 
     func addWatchlist(_ watchlist: Watchlist) {
         var updatedWatchlists = watchlists
         updatedWatchlists.append(watchlist)
+        watchlists = updatedWatchlists
+    }
+
+    func removeWatchlist(watchlist: Watchlist) {
+        var updatedWatchlists = watchlists
+
+        updatedWatchlists.removeAll(where: {
+            $0.id == watchlist.id
+        })
+
+        if watchlist.id == activeWatchlist?.id, let first = updatedWatchlists.first {
+            setActive(id: first.id)
+        }
+
         watchlists = updatedWatchlists
     }
 
@@ -63,5 +72,9 @@ final class WatchlistDatabase: WatchlistDatabaseProtocol {
         }
 
         watchlists = updatedWatchlists
+    }
+
+    func setActive(id: String) {
+        userDefaults.set(id, forKey: activeWatchlistIDKey)
     }
 }

@@ -26,6 +26,8 @@ public final class WatchlistCoordinator: Coordinator {
             switch action {
             case .addQuoteTapped:
                 self?.goToAddQuote()
+            case .editWatchlistsTapped:
+                self?.goToEditWatchlists()
             }
         }
 
@@ -43,5 +45,18 @@ public final class WatchlistCoordinator: Coordinator {
         }
 
         navigationController.pushViewController(addQuoteViewController, animated: false)
+    }
+
+    private func goToEditWatchlists() {
+        let watchlistEditViewController = WatchlistEditViewController(viewModel: Resolver().editWatchlistsViewModel)
+
+        watchlistEditViewController.action = { [weak self] action in
+            switch action {
+            case .finished:
+                self?.navigationController.popViewController(animated: true)
+            }
+        }
+
+        navigationController.pushViewController(watchlistEditViewController, animated: false)
     }
 }

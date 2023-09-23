@@ -11,6 +11,7 @@ import SnapKit
 final class WatchListViewController: UIViewController {
     enum Action {
         case addQuoteTapped
+        case editWatchlistsTapped
     }
 
     var action: ((Action) -> Void)?
@@ -108,6 +109,6 @@ final class WatchListViewController: UIViewController {
 
     @objc
     private func watchlistsTapped() {
-        print("addButtonTapped")
+        action?(.editWatchlistsTapped)
     }
 }

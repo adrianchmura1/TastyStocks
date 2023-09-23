@@ -12,7 +12,7 @@ public struct Watchlist {
     public let name: String
     public var quotes: [Quote]
 
-    public init(id: String, name: String, quotes: [Quote] = []) {
+    public init(id: String = UUID().uuidString, name: String, quotes: [Quote] = []) {
         self.id = id
         self.name = name
         self.quotes = quotes

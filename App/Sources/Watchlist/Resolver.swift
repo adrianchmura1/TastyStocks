@@ -29,4 +29,16 @@ final class Resolver {
 
         return AddQuoteViewModel(interactor: interactor)
     }
+
+    var editWatchlistsViewModel: WatchlistEditViewModel {
+        let watchlistRepository = InfrastructureAssembly().watchlistRepository()
+        let watchlistDomainAssembly = WatchlistDomainAssembly()
+
+        return WatchlistEditViewModel(
+            interactor: WatchlistEditInteractor(
+                addWatchlistUseCase: watchlistDomainAssembly.addWatchlistUseCase(repository: watchlistRepository),
+                getWatchlistsUseCase: watchlistDomainAssembly.getWatchlistsUseCase(repository: watchlistRepository),
+                switchWatchlistUseCase: watchlistDomainAssembly.switchWatchlistUseCase(repository: watchlistRepository))
+        )
+    }
 }

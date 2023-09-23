@@ -26,9 +26,11 @@ final class GetActiveWatchlistUseCase: GetActiveWatchlistUseCaseProtocol {
                 completion(.success(activeWatchlist))
             } else {
                 let quotes = [Quote(symbol: "AAPL"), Quote(symbol: "MSFT"), Quote(symbol: "GOOG")]
-                let initialWatchlist = Watchlist(id: UUID().uuidString, name: Self.initialWatchlistName, quotes: quotes)
+                let initialWatchlist = Watchlist(name: Self.initialWatchlistName, quotes: quotes)
 
-                self?.repository.addWatchlist(initialWatchlist) { watchlist in
+                self?.repository.addWatchlist(initialWatchlist)
+
+                self?.repository.fetchActiveWatchlist {  watchlist in
                     completion(.success(watchlist))
                 }
             }

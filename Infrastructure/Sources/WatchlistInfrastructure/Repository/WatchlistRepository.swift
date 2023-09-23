@@ -26,6 +26,11 @@ final class WatchlistRepository: WatchlistRepositoryProtocol {
             return
         }
 
+        guard !activeWatchlist.quotes.isEmpty else {
+            completion(activeWatchlist)
+            return
+        }
+
         restService.refresh(watchlist: activeWatchlist) { result in
             switch result {
             case .success(let stockDataResponse):
@@ -48,15 +53,21 @@ final class WatchlistRepository: WatchlistRepositoryProtocol {
         }
     }
 
-    // Creates new watchlist in DB and fetches current quotes
-    func addWatchlist(_ watchlist: WatchlistDomain.Watchlist, completion: @escaping (WatchlistDomain.Watchlist?) -> Void) {
+    func addWatchlist(_ watchlist: WatchlistDomain.Watchlist) {
         database.addWatchlist(watchlist)
-        database.activeWatchlist = watchlist
-        fetchActiveWatchlist(completion: completion)
+        database.setActive(id: watchlist.id)
     }
 
     func addToActiveWatchlist(symbol: String) {
         database.addToActive(symbol: symbol)
+    }
+
+    func remove(watchlist: WatchlistDomain.Watchlist) {
+        database.removeWatchlist(watchlist: watchlist)
+    }
+
+    func setActive(id: String) {
+        database.setActive(id: id)
     }
 }
 

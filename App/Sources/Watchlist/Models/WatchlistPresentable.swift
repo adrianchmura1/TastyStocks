@@ -18,10 +18,3 @@ struct WatchlistPresentable {
         self.quotes = quotes
     }
 }
-
-struct QuotePresentable {
-    let symbol: String
-    let askPrice: String
-    let bidPrice: String
-    let lastPrice: String
-}
