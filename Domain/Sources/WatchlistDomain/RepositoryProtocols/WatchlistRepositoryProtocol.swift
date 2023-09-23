@@ -13,6 +13,6 @@ public protocol WatchlistRepositoryProtocol: AnyObject {
     func fetchActiveWatchlist(completion: @escaping (WatchlistDomain.Watchlist?) -> Void)
     func addWatchlist(_ watchlist: WatchlistDomain.Watchlist)
     func addToActiveWatchlist(symbol: String)
-    func remove(watchlist: Watchlist)
+    func removeWatchlist(id: String)
     func setActive(id: String)
 }

@@ -16,16 +16,16 @@ final class WatchlistEditViewModel {
 
     var action: ((Action) -> Void)?
 
-    private var watchlists: [WatchlistNamePresentable] = []
+    var numberOfWatchlists: Int {
+        return watchlists.count
+    }
 
     private let interactor: WatchlistEditInteractor
 
+    private var watchlists: [WatchlistNamePresentable] = []
+
     init(interactor: WatchlistEditInteractor) {
         self.interactor = interactor
-    }
-
-    var numberOfWatchlists: Int {
-        return watchlists.count
     }
 
     func onAppear() {
@@ -43,7 +43,9 @@ final class WatchlistEditViewModel {
     }
 
     func removeWatchlist(at index: Int) {
-        watchlists.remove(at: index)
+        let presentable = watchlist(at: index)
+        interactor.removeWatchlist(id: presentable.id)
+        reloadWatchlists()
         action?(.reload)
     }
 
@@ -55,33 +57,5 @@ final class WatchlistEditViewModel {
 
     private func reloadWatchlists() {
         watchlists = interactor.watchlists.map { WatchlistNamePresentable(id: $0.id, name: $0.name) }
-    }
-}
-
-final class WatchlistEditInteractor {
-    var watchlists: [Watchlist] {
-        getWatchlistsUseCase.execute()
-    }
-
-    private let addWatchlistUseCase: AddWatchlistUseCaseProtocol
-    private let getWatchlistsUseCase: GetWatchlistsUseCaseProtocol
-    private let switchWatchlistUseCase: SwitchWatchlistUseCaseProtocol
-
-    init(
-        addWatchlistUseCase: AddWatchlistUseCaseProtocol,
-        getWatchlistsUseCase: GetWatchlistsUseCaseProtocol,
-        switchWatchlistUseCase: SwitchWatchlistUseCaseProtocol
-    ) {
-        self.addWatchlistUseCase = addWatchlistUseCase
-        self.getWatchlistsUseCase = getWatchlistsUseCase
-        self.switchWatchlistUseCase = switchWatchlistUseCase
-    }
-
-    func add(watchlist: Watchlist) {
-        addWatchlistUseCase.execute(watchlist: watchlist)
-    }
-
-    func switchWatchlist(id: String) {
-        switchWatchlistUseCase.execute(for: id)
     }
 }

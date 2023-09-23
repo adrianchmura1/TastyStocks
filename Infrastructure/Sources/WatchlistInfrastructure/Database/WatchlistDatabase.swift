@@ -45,14 +45,14 @@ final class WatchlistDatabase: WatchlistDatabaseProtocol {
         watchlists = updatedWatchlists
     }
 
-    func removeWatchlist(watchlist: Watchlist) {
+    func removeWatchlist(id: String) {
         var updatedWatchlists = watchlists
 
         updatedWatchlists.removeAll(where: {
-            $0.id == watchlist.id
+            $0.id == id
         })
 
-        if watchlist.id == activeWatchlist?.id, let first = updatedWatchlists.first {
+        if id == activeWatchlist?.id, let first = updatedWatchlists.first {
             setActive(id: first.id)
         }
 
