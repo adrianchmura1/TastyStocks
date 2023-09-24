@@ -14,6 +14,7 @@ final class WatchListViewModel {
         case showLoading
         case hideLoading
         case changeNavigationTitle(String)
+        case goToQuotes(String)
     }
 
     var action: ((Action) -> Void)?
@@ -51,6 +52,10 @@ final class WatchListViewModel {
             fatalError("Cannot access any instrument data as current watchlist is nil")
         }
         return currentWatchlist.quotes[index]
+    }
+
+    func didSelect(row: Int) {
+        action?(.goToQuotes(quote(at: row).symbol))
     }
 
     func deleteRowTapped(at index: Int) {

@@ -180,16 +180,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EE4562CC-F3D3-494C-9C00-0E7316B55106"
+            uuid = "42F4A000-2F5B-4A30-A1AF-3B3A376CF767"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "App/Sources/Watchlist/Screens/EditWatchlists/WatchlistEditViewController.swift"
+            filePath = "App/Sources/Watchlist/Screens/Quote/QuoteViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "tableView(_:didSelectRowAt:)"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "configureChartData(with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6B9953AA-5333-4DAA-9352-03A9D853099D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "App/Sources/Watchlist/Screens/Quote/QuoteViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

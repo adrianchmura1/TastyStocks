@@ -33,4 +33,15 @@ public final class InfrastructureAssembly {
             restService: SymbolsRestService(networkService: networkService)
         )
     }
+
+    public func symbolHistoryRepository() -> SymbolHistoryRepositoryProtocol {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+
+        let networkService = NetworkService(decoder: decoder)
+
+        return SymbolHistoryRepository(
+            restService: QuotesRestService(networkService: networkService)
+        )
+    }
 }

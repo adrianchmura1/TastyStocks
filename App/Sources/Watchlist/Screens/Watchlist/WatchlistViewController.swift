@@ -12,6 +12,7 @@ final class WatchListViewController: UIViewController {
     enum Action {
         case addQuoteTapped
         case editWatchlistsTapped
+        case goToQuotes(symbol: String)
     }
 
     var action: ((Action) -> Void)?
@@ -63,6 +64,8 @@ final class WatchListViewController: UIViewController {
                 self?.setLoading(false)
             case .changeNavigationTitle(let title):
                 self?.navigationItem.title = title
+            case .goToQuotes(let symbol):
+                self?.action?(.goToQuotes(symbol: symbol))
             }
         }
 

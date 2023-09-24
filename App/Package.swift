@@ -17,7 +17,8 @@ let package = Package(
         .package(name: "Coordinators", path: "../Coordinators"),
         .package(name: "Domain", path: "../Domain"),
         .package(name: "Infrastructure", path: "../Infrastructure"),
-        .package(name: "SnapKit", url: "https://github.com/SnapKit/SnapKit.git", from: "5.0.0")
+        .package(name: "SnapKit", url: "https://github.com/SnapKit/SnapKit.git", from: "5.0.0"),
+        .package(url: "https://github.com/danielgindi/Charts.git", .upToNextMajor(from: "5.0.0"))
     ],
     targets: [
         .target(
@@ -26,6 +27,7 @@ let package = Package(
                 .product(name: "WatchlistDomain", package: "Domain"),
                 .product(name: "WatchlistInfrastructure", package: "Infrastructure"),
                 .product(name: "Coordinators", package: "Coordinators"),
+                .product(name: "DGCharts", package: "Charts"),
                 "SnapKit"
             ]),
         .testTarget(

@@ -28,6 +28,8 @@ public final class WatchlistCoordinator: Coordinator {
                 self?.goToAddQuote()
             case .editWatchlistsTapped:
                 self?.goToEditWatchlists()
+            case .goToQuotes(let symbol):
+                self?.goToQuotes(symbol: symbol)
             }
         }
 
@@ -58,5 +60,10 @@ public final class WatchlistCoordinator: Coordinator {
         }
 
         navigationController.pushViewController(watchlistEditViewController, animated: false)
+    }
+
+    private func goToQuotes(symbol: String) {
+        let quoteViewController = QuoteViewController(viewModel: Resolver().quoteViewModel(symbol: symbol))
+        navigationController.pushViewController(quoteViewController, animated: false)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Resolver.swift
 //  
 //
 //  Created by Adrian Chmura on 20/09/2023.
@@ -46,5 +46,12 @@ final class Resolver {
                 removeWatchlistUseCase: watchlistDomainAssembly.removeWatchlistUseCase(repository: watchlistRepository),
                 getActiveWatchlistIdUseCase: watchlistDomainAssembly.getActiveWatchlistIdUseCase(repository: watchlistRepository))
         )
+    }
+
+    func quoteViewModel(symbol: String) -> QuoteViewModel {
+        let symbolHistoryRepository = InfrastructureAssembly().symbolHistoryRepository()
+        let symbolHistoryUseCase = WatchlistDomainAssembly().getSymbolHistoryUseCase(repository: symbolHistoryRepository)
+
+        return QuoteViewModel(symbol: symbol, interactor: QuoteInteractor(getSymbolHistoryUseCaseProtocol: symbolHistoryUseCase))
     }
 }

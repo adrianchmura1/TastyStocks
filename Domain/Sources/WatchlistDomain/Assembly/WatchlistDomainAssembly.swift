@@ -45,4 +45,8 @@ public final class WatchlistDomainAssembly {
     public func removeSymbolUseCase(repository: WatchlistRepositoryProtocol) -> RemoveSymbolUseCaseProtocol {
         RemoveSymbolUseCase(repository: repository)
     }
+
+    public func getSymbolHistoryUseCase(repository: SymbolHistoryRepositoryProtocol) -> GetSymbolHistoryUseCaseProtocol {
+        GetSymbolHistoryUseCase(repository: repository)
+    }
 }

@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  WatchlistRestService.swift
 //  
 //
 //  Created by Adrian Chmura on 21/09/2023.
@@ -46,23 +46,5 @@ class WatchlistRestService: WatchlistRestServiceProtocol {
                 completion(.failure(error))
             }
         }
-    }
-}
-
-struct StockDataResponse: Decodable {
-    var quote: QuoteResponse
-}
-
-struct QuoteResponse: Decodable {
-    let latestPrice: Double?
-    let symbol: String
-    let askPrice: Double?
-    let bidPrice: Double?
-
-    enum CodingKeys: String, CodingKey {
-        case latestPrice
-        case symbol
-        case askPrice = "iexAskPrice"
-        case bidPrice = "iexBidPrice"
     }
 }
