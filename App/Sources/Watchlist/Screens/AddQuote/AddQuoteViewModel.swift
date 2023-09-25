@@ -19,9 +19,17 @@ final class AddQuoteViewModel {
     var filteredQuotes: [StockQuote] = []
 
     private let interactor: AddQuoteInteractor
+    private let backgroundQueue: Queue
+    private let mainQueue: Queue
 
-    init(interactor: AddQuoteInteractor) {
+    init(
+        backgroundQueue: Queue = DefaultBackgroundQueue(),
+        mainQueue: Queue = DefaultMainQueue(),
+        interactor: AddQuoteInteractor
+    ) {
         self.interactor = interactor
+        self.backgroundQueue = backgroundQueue
+        self.mainQueue = mainQueue
     }
 
     func filterStockQuotes(with searchText: String) {
@@ -32,7 +40,7 @@ final class AddQuoteViewModel {
         }
 
         action?(.startLoading)
-        DispatchQueue.global().async {
+        backgroundQueue.async {
             self.interactor.search(text: searchText) { [weak self] result in
                 guard let self else { return }
                 switch result {
@@ -43,7 +51,7 @@ final class AddQuoteViewModel {
                     break
                 }
 
-                DispatchQueue.main.async {
+                mainQueue.async {
                     self.action?(.reload)
                     self.action?(.finishLoading)
                 }

@@ -106,7 +106,7 @@ final class AddQuoteViewController: UIViewController {
     }
 }
 
-struct StockQuote {
+struct StockQuote: Equatable {
     let symbol: String
     let name: String
 }
