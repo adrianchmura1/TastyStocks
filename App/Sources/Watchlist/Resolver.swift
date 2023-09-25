@@ -49,9 +49,19 @@ final class Resolver {
     }
 
     func quoteViewModel(symbol: String) -> QuoteViewModel {
-        let symbolHistoryRepository = InfrastructureAssembly().symbolHistoryRepository()
-        let symbolHistoryUseCase = WatchlistDomainAssembly().getSymbolHistoryUseCase(repository: symbolHistoryRepository)
+        let infrastructureAssembly = InfrastructureAssembly()
+        let symbolHistoryRepository = infrastructureAssembly.symbolHistoryRepository()
+        let quoteRepository = infrastructureAssembly.quoteRepository()
+        let domainAssembly = WatchlistDomainAssembly()
+        let symbolHistoryUseCase = domainAssembly.getSymbolHistoryUseCase(repository: symbolHistoryRepository)
+        let getQuoteUseCase = domainAssembly.getQuoteUseCase(repository: quoteRepository)
 
-        return QuoteViewModel(symbol: symbol, interactor: QuoteInteractor(getSymbolHistoryUseCaseProtocol: symbolHistoryUseCase))
+        return QuoteViewModel(
+            symbol: symbol,
+            interactor: QuoteInteractor(
+                getSymbolHistoryUseCaseProtocol: symbolHistoryUseCase,
+                getQuoteUseCase: getQuoteUseCase
+            )
+        )
     }
 }

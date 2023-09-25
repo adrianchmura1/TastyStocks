@@ -32,8 +32,10 @@ final class WatchListViewModel {
         action?(.showLoading)
         reloadActiveWatchlist()
 
-        timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
-            self?.reloadActiveWatchlist()
+        if timer == nil {
+            timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
+                self?.reloadActiveWatchlist()
+            }
         }
     }
 
@@ -70,7 +72,7 @@ final class WatchListViewModel {
                 case .success(let watchlist):
                     guard let self, let watchlist else { return }
 
-                    let mappedWatchlist = self.mapToWatchlistPresentable(watchlist: watchlist)
+                    let mappedWatchlist = WatchlistMapper.mapToWatchlistPresentable(watchlist: watchlist)
 
                     DispatchQueue.main.async {
                         self.currentWatchlist = mappedWatchlist
@@ -84,24 +86,5 @@ final class WatchListViewModel {
                 }
             }
         }
-    }
-
-    private func mapToWatchlistPresentable(watchlist: Watchlist) -> WatchlistPresentable {
-        let sortedQuotes = watchlist.quotes.map { quote in
-            QuotePresentable(
-                symbol: quote.symbol,
-                askPrice: quote.ask ?? "N/A",
-                bidPrice: quote.bid ?? "N/A",
-                lastPrice: quote.last ?? "N/A"
-            )
-        }.sorted(by: { (quote1, quote2) -> Bool in
-            return quote1.symbol < quote2.symbol
-        })
-
-        return WatchlistPresentable(
-            id: watchlist.id,
-            name: watchlist.name,
-            quotes: sortedQuotes
-        )
     }
 }

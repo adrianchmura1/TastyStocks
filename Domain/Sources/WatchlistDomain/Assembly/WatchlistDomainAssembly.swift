@@ -49,4 +49,8 @@ public final class WatchlistDomainAssembly {
     public func getSymbolHistoryUseCase(repository: SymbolHistoryRepositoryProtocol) -> GetSymbolHistoryUseCaseProtocol {
         GetSymbolHistoryUseCase(repository: repository)
     }
+
+    public func getQuoteUseCase(repository: QuoteRepositoryProtocol) -> GetQuoteUseCaseProtocol {
+        GetQuoteUseCase(repository: repository)
+    }
 }

@@ -40,13 +40,9 @@ final class WatchlistRepository: WatchlistRepositoryProtocol {
             case .success(let stockDataResponse):
                 var watchlist = activeWatchlist
                 let quotesResponse = stockDataResponse.map({ $0.quote })
+                let mapper = QuoteResponseMapper()
                 let quotes = quotesResponse.map {
-                    Quote(
-                        symbol: $0.symbol,
-                        bid: $0.bidPrice.map { String($0) },
-                        ask: $0.askPrice.map { String($0) },
-                        last: $0.latestPrice.map { String($0) }
-                    )
+                    mapper.map(quoteResponse: $0)
                 }
                 watchlist.update(quotes: quotes)
                 completion(watchlist)
@@ -78,4 +74,3 @@ final class WatchlistRepository: WatchlistRepositoryProtocol {
         database.setActive(id: id)
     }
 }
-

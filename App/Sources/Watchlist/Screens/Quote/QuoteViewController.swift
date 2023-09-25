@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  QuoteViewController.swift
 //  
 //
 //  Created by Adrian Chmura on 23/09/2023.
@@ -10,64 +10,6 @@ import SnapKit
 import DGCharts
 import WatchlistDomain
 
-final class QuoteInteractor {
-    private let getSymbolHistoryUseCaseProtocol: GetSymbolHistoryUseCaseProtocol
-
-    init(getSymbolHistoryUseCaseProtocol: GetSymbolHistoryUseCaseProtocol) {
-        self.getSymbolHistoryUseCaseProtocol = getSymbolHistoryUseCaseProtocol
-    }
-
-    func fetchHistory(for symbol: String, completion: @escaping (Result<SymbolPriceHistory, Error>) -> Void) {
-        getSymbolHistoryUseCaseProtocol.execute(for: symbol, completion: completion)
-    }
-}
-
-final class QuoteViewModel {
-    enum Action {
-        case refreshChart(CandleChartDataSet)
-    }
-
-    let symbol: String
-
-    var action: ((Action) -> Void)?
-
-    var title: String {
-        "\(symbol) Quote"
-    }
-
-    private let interactor: QuoteInteractor
-
-    init(symbol: String, interactor: QuoteInteractor) {
-        self.symbol = symbol
-        self.interactor = interactor
-    }
-
-    func onAppear() {
-        DispatchQueue.global().async {
-            self.interactor.fetchHistory(for: self.symbol) { [weak self] result in
-                DispatchQueue.main.async {
-                    guard let self else { return }
-                    switch result {
-                    case .success(let priceHistory):
-                        self.action?(.refreshChart(self.mapToCandleChartDataSet(priceHistory: priceHistory)))
-                    case .failure:
-                        // TODO: Show error view
-                        print("Error")
-                    }
-                }
-            }
-        }
-    }
-
-    private func mapToCandleChartDataSet(priceHistory: SymbolPriceHistory) -> CandleChartDataSet {
-        let entries: [ChartDataEntry] = priceHistory.days.enumerated().map { (index, info) in
-            CandleChartDataEntry(x: Double(index), shadowH: info.high, shadowL: info.low, open: info.open, close: info.close)
-        }
-
-        return CandleChartDataSet(entries: entries, label: "30-Day Price")
-    }
-}
-
 final class QuoteViewController: UIViewController {
     private let symbolLabel = UILabel()
     private let bidLabel = UILabel()
@@ -75,6 +17,13 @@ final class QuoteViewController: UIViewController {
     private let chartView = CandleStickChartView()
 
     private let viewModel: QuoteViewModel
+
+    private lazy var loadingSpinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.color = .gray
+        spinner.hidesWhenStopped = true
+        return spinner
+    }()
 
     init(viewModel: QuoteViewModel) {
         self.viewModel = viewModel
@@ -95,23 +44,43 @@ final class QuoteViewController: UIViewController {
             switch action {
             case .refreshChart(let candleChartDataSet):
                 self?.configureChartData(with: candleChartDataSet)
+            case .startLoading:
+                self?.setLoading(true)
+            case .finishLoading:
+                self?.setLoading(false)
+            case .updateQuote(let quotePresentable):
+                self?.updateLabels(with: quotePresentable)
             }
         }
 
         viewModel.onAppear()
     }
 
+    private func setLoading(_ loading: Bool) {
+        loadingSpinner.isHidden = !loading
+        bidLabel.isHidden = loading
+        askLabel.isHidden = loading
+        chartView.isHidden = loading
+    }
+
+    private func updateLabels(with model: QuotePresentable) {
+        bidLabel.text = "Bid Price: \(model.bidPrice)"
+        askLabel.text = "Ask Price: \(model.askPrice)"
+    }
+
     private func setupUI() {
         view.backgroundColor = .white
 
         symbolLabel.text = viewModel.symbol
-//        bidLabel.text = "Bid Price: \(viewModel.quote?.bidPrice ?? "N/A")"
-//        askLabel.text = "Ask Price: \(viewModel.quote?.askPrice ?? "N/A")"
 
         view.addSubview(symbolLabel)
         view.addSubview(bidLabel)
         view.addSubview(askLabel)
         view.addSubview(chartView)
+        view.addSubview(loadingSpinner)
+
+        bidLabel.text = "Bid Price: "
+        askLabel.text = "Ask Price: "
 
         symbolLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
@@ -131,6 +100,10 @@ final class QuoteViewController: UIViewController {
         chartView.snp.makeConstraints { make in
             make.top.equalTo(askLabel.snp.bottom).offset(20)
             make.leading.trailing.bottom.equalToSuperview()
+        }
+
+        loadingSpinner.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
 

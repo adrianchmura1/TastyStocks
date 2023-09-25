@@ -187,8 +187,8 @@
             filePath = "App/Sources/Watchlist/Screens/Quote/QuoteViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "configureChartData(with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -196,16 +196,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6B9953AA-5333-4DAA-9352-03A9D853099D"
+            uuid = "376F6064-FB79-497A-9BF1-7ED2AB57EA82"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "App/Sources/Watchlist/Screens/Quote/QuoteViewController.swift"
+            filePath = "Infrastructure/Sources/WatchlistInfrastructure/RestService/WatchlistRestService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "refresh(watchlist:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

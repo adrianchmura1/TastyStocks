@@ -9,13 +9,13 @@ import WatchlistDomain
 import Foundation
 
 final class SymbolHistoryRepository: SymbolHistoryRepositoryProtocol {
-    private let restService: QuotesRestServiceProtocol
+    private let restService: ChartRestServiceProtocol
 
-    init(restService: QuotesRestServiceProtocol) {
+    init(restService: ChartRestServiceProtocol) {
         self.restService = restService
     }
 
     func fetchLatestPrice(for symbol: String, completion: @escaping (Result<SymbolPriceHistory, Error>) -> Void) {
-        restService.fetchLatestPrice(for: symbol, completion: completion)
+        restService.fetchHistoricalData(for: symbol, completion: completion)
     }
 }

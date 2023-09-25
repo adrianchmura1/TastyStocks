@@ -8,18 +8,18 @@
 import Foundation
 import WatchlistDomain
 
-protocol QuotesRestServiceProtocol {
-    func fetchLatestPrice(for symbol: String, completion: @escaping (Result<SymbolPriceHistory, Error>) -> Void)
+protocol ChartRestServiceProtocol {
+    func fetchHistoricalData(for symbol: String, completion: @escaping (Result<SymbolPriceHistory, Error>) -> Void)
 }
 
-final class QuotesRestService: QuotesRestServiceProtocol {
+final class ChartRestService: ChartRestServiceProtocol {
     private let networkService: NetworkService
 
     init(networkService: NetworkService) {
         self.networkService = networkService
     }
 
-    func fetchLatestPrice(for symbol: String, completion: @escaping (Result<SymbolPriceHistory, Error>) -> Void) {
+    func fetchHistoricalData(for symbol: String, completion: @escaping (Result<SymbolPriceHistory, Error>) -> Void) {
         let queryItemToken = URLQueryItem(name: "token", value: "pk_b55956aac6534be093558f56df50d784")
 
         var components = URLComponents()

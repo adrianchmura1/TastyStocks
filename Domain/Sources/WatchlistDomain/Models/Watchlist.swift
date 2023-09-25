@@ -19,7 +19,13 @@ public struct Watchlist {
     }
 
     public mutating func update(quotes newQuotes: [Quote]) {
-        quotes = newQuotes
+        for newQuote in newQuotes {
+            if let index = quotes.firstIndex(where: { $0.symbol == newQuote.symbol }) {
+                quotes[index] = newQuote
+            } else {
+                quotes.append(newQuote)
+            }
+        }
     }
 
     public mutating func add(quote: Quote) {

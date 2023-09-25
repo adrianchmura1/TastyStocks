@@ -11,37 +11,50 @@ import Foundation
 public final class InfrastructureAssembly {
     public init() {}
 
-    public func watchlistRepository() -> WatchlistRepositoryProtocol {
+    var networkService: NetworkService {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
+        return NetworkService(decoder: decoder)
+    }
 
-        let networkService = NetworkService(decoder: decoder)
+    var watchlistRestService: WatchlistRestService {
+        WatchlistRestService(networkService: networkService)
+    }
 
+    var symbolsRestService: SymbolsRestService {
+        SymbolsRestService(networkService: networkService)
+    }
+
+    var chartRestService: ChartRestService {
+        ChartRestService(networkService: networkService)
+    }
+
+    var quoteRestService: QuoteRestService {
+        QuoteRestService(networkService: networkService)
+    }
+
+    public func watchlistRepository() -> WatchlistRepositoryProtocol {
         return WatchlistRepository(
             database: WatchlistDatabase(),
-            restService: WatchlistRestService(networkService: networkService)
+            restService: watchlistRestService
         )
     }
 
     public func symbolsRepository() -> SymbolsRepositoryProtocol {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-
-        let networkService = NetworkService(decoder: decoder)
-
         return SymbolsRepository(
-            restService: SymbolsRestService(networkService: networkService)
+            restService: symbolsRestService
         )
     }
 
     public func symbolHistoryRepository() -> SymbolHistoryRepositoryProtocol {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-
-        let networkService = NetworkService(decoder: decoder)
-
         return SymbolHistoryRepository(
-            restService: QuotesRestService(networkService: networkService)
+            restService: chartRestService
+        )
+    }
+
+    public func quoteRepository() -> QuoteRepositoryProtocol {
+        return QuoteRepository(
+            restService: quoteRestService
         )
     }
 }
