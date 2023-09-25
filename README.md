@@ -25,9 +25,10 @@ TastyStocks is organized into several modules:
 
 1. Clone the repository to your local machine.
 2. Open the project in Xcode:
-```Copy code
+```shell
 cd TastyStocks
-open TastyStocks.xcodeproj```
+open TastyStocks.xcodeproj
+```
 
 ### Running the App
 
