@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct QuoteSearchResult {
+public struct QuoteSearchResult: Equatable {
     public let symbol: String
     public let name: String
 

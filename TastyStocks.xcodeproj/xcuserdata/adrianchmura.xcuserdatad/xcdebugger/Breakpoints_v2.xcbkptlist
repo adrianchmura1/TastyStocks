@@ -395,6 +395,36 @@
                   endingLineNumber = "27"
                   offsetFromSymbolStart = "100">
                </Location>
+               <Location
+                  uuid = "BCC3F4A9-210A-4E88-8C22-29BFE114DDCF - 9a152a238bc832a3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WatchlistDomain.GetActiveWatchlistUseCase.execute(completion: (Swift.Result&lt;Swift.Optional&lt;WatchlistDomain.Watchlist&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "InfrastructureTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianchmura/devs/TastyStocks/Domain/Sources/WatchlistDomain/UseCases/GetActiveWatchlistUseCase.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "BCC3F4A9-210A-4E88-8C22-29BFE114DDCF - c319b88861287053"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;WatchlistDomain.Watchlist&gt;) -&gt; () in WatchlistDomain.GetActiveWatchlistUseCase.execute(completion: (Swift.Result&lt;Swift.Optional&lt;WatchlistDomain.Watchlist&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "InfrastructureTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianchmura/devs/TastyStocks/Domain/Sources/WatchlistDomain/UseCases/GetActiveWatchlistUseCase.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "100">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -473,7 +503,69 @@
                   endingLineNumber = "28"
                   offsetFromSymbolStart = "208">
                </Location>
+               <Location
+                  uuid = "6CE4A8F2-354C-490B-9683-BEA2379C627D - c319b88861287034"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;WatchlistDomain.Watchlist&gt;) -&gt; () in WatchlistDomain.GetActiveWatchlistUseCase.execute(completion: (Swift.Result&lt;Swift.Optional&lt;WatchlistDomain.Watchlist&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "InfrastructureTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianchmura/devs/TastyStocks/Domain/Sources/WatchlistDomain/UseCases/GetActiveWatchlistUseCase.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "112">
+               </Location>
+               <Location
+                  uuid = "6CE4A8F2-354C-490B-9683-BEA2379C627D - c319b88861287034"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;WatchlistDomain.Watchlist&gt;) -&gt; () in WatchlistDomain.GetActiveWatchlistUseCase.execute(completion: (Swift.Result&lt;Swift.Optional&lt;WatchlistDomain.Watchlist&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "InfrastructureTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianchmura/devs/TastyStocks/Domain/Sources/WatchlistDomain/UseCases/GetActiveWatchlistUseCase.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "208">
+               </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5D4A9415-DA29-4896-97A0-CEF3B60F51A1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Infrastructure/Tests/InfrastructureTests/Tests/File.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "testAddToActiveWatchlist()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9895C907-9150-4285-9A65-397AB02DD050"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Infrastructure/Tests/InfrastructureTests/Tests/File.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "testRemoveFromActive()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
