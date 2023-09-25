@@ -7,6 +7,7 @@
 
 import WatchlistDomain
 import Foundation
+import Environment
 
 protocol QuoteRestServiceProtocol: AnyObject {
     func fetchQuote(symbol: String, completion: @escaping (Result<Quote, Error>) -> Void)
@@ -20,12 +21,12 @@ final class QuoteRestService: QuoteRestServiceProtocol {
     }
 
     func fetchQuote(symbol: String, completion: @escaping (Result<Quote, Error>) -> Void) {
-        let queryItemToken = URLQueryItem(name: "token", value: "pk_b55956aac6534be093558f56df50d784")
+        let queryItemToken = URLQueryItem(name: "token", value: EnvironmentManager.shared.iexToken)
 
         var components = URLComponents()
         components.scheme = "https"
-        components.host = "cloud.iexapis.com"
-        components.path = "/v1/stock/\(symbol)/quote"
+        components.host = EnvironmentManager.shared.iexHost
+        components.path = EnvironmentManager.shared.iexFetchQuotePath(symbol: symbol)
         components.queryItems = [queryItemToken]
 
         guard let url = components.url else {

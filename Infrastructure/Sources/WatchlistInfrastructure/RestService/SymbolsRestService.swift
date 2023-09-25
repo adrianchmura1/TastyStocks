@@ -7,6 +7,7 @@
 
 import Foundation
 import WatchlistDomain
+import Environment
 
 protocol SymbolsRestServiceProtocol: AnyObject {
     func findSymbol(text: String, completion: @escaping (Result<[WatchlistDomain.QuoteSearchResult], Error>) -> Void)
@@ -22,8 +23,8 @@ final class SymbolsRestService: SymbolsRestServiceProtocol {
     func findSymbol(text: String, completion: @escaping (Result<[WatchlistDomain.QuoteSearchResult], Error>) -> Void) {
         var components = URLComponents()
         components.scheme = "https"
-        components.host = "api.tastyworks.com"
-        components.path = "/symbols/search/\(text)"
+        components.host = EnvironmentManager.shared.tastyHost
+        components.path = EnvironmentManager.shared.tastySearchPath(text: text)
 
         guard let url = components.url else {
             completion(.failure(NetworkError.invalidURL))

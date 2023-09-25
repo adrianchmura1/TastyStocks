@@ -7,6 +7,7 @@
 
 import Foundation
 import WatchlistDomain
+import Environment
 
 protocol ChartRestServiceProtocol {
     func fetchHistoricalData(for symbol: String, completion: @escaping (Result<SymbolPriceHistory, Error>) -> Void)
@@ -20,12 +21,12 @@ final class ChartRestService: ChartRestServiceProtocol {
     }
 
     func fetchHistoricalData(for symbol: String, completion: @escaping (Result<SymbolPriceHistory, Error>) -> Void) {
-        let queryItemToken = URLQueryItem(name: "token", value: "pk_b55956aac6534be093558f56df50d784")
+        let queryItemToken = URLQueryItem(name: "token", value: EnvironmentManager.shared.iexToken)
 
         var components = URLComponents()
         components.scheme = "https"
-        components.host = "cloud.iexapis.com"
-        components.path = "/v1/stock/\(symbol)/chart/1m"
+        components.host = EnvironmentManager.shared.iexHost
+        components.path = EnvironmentManager.shared.iexHistoricalDataPath(symbol: symbol)
         components.queryItems = [queryItemToken]
 
         guard let url = components.url else {

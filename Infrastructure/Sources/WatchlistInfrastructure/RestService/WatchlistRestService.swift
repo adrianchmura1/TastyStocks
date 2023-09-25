@@ -7,6 +7,7 @@
 
 import Foundation
 import WatchlistDomain
+import Environment
 
 protocol WatchlistRestServiceProtocol {
     func refresh(watchlist: Watchlist, completion: @escaping (Result<[StockDataResponse], Error>) -> Void)
@@ -27,8 +28,8 @@ class WatchlistRestService: WatchlistRestServiceProtocol {
 
         var components = URLComponents()
         components.scheme = "https"
-        components.host = "cloud.iexapis.com"
-        components.path = "/v1/stock/market/batch"
+        components.host = EnvironmentManager.shared.iexHost
+        components.path = EnvironmentManager.shared.iexBatchQuotePath
         components.queryItems = [queryItemSymbols, queryItemToken, queryItemTypes]
 
         guard let url = components.url else {

@@ -10,6 +10,9 @@ let package = Package(
         .library(
             name: "WatchlistInfrastructure",
             targets: ["WatchlistInfrastructure"]),
+        .library(
+            name: "Environment",
+            targets: ["Environment"]),
     ],
     dependencies: [
         .package(name: "Coordinators", path: "../Coordinators"),
@@ -20,7 +23,10 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "WatchlistInfrastructure",
-            dependencies: [.product(name: "WatchlistDomain", package: "Domain")]),
+            dependencies: [.product(name: "WatchlistDomain", package: "Domain"), "Environment"]),
+        .target(
+            name: "Environment",
+            dependencies: []),
         .testTarget(
             name: "InfrastructureTests",
             dependencies: ["WatchlistInfrastructure"]),
