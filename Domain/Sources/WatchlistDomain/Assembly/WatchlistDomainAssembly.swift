@@ -11,7 +11,14 @@ public final class WatchlistDomainAssembly {
     public init() {}
 
     public func getActiveWatchlistUseCase(repository: WatchlistRepositoryProtocol) -> GetActiveWatchlistUseCaseProtocol {
-        GetActiveWatchlistUseCase(repository: repository)
+        GetActiveWatchlistUseCase(
+            repository: repository,
+            createInitialWatchlistUseCase: createInitialWatchlistUseCase(repository: repository)
+        )
+    }
+
+    public func createInitialWatchlistUseCase(repository: WatchlistRepositoryProtocol) -> CreateInitialWatchlistUseCaseProtocol {
+        CreateInitialWatchlistUseCase(repository: repository)
     }
 
     public func getActiveWatchlistIdUseCase(repository: WatchlistRepositoryProtocol) -> GetActiveWatchlistIdUseCaseProtocol {

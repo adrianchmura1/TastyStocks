@@ -1,0 +1,66 @@
+{
+  "configurations" : [
+    {
+      "id" : "A886678B-BC5A-4FBA-B71D-1D5385B76F5D",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:TastyStocks.xcodeproj",
+      "identifier" : "48BD89FB2AB46D6800342468",
+      "name" : "TastyStocks"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:TastyStocks.xcodeproj",
+        "identifier" : "48BD8A112AB46D6900342468",
+        "name" : "TastyStocksTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:TastyStocks.xcodeproj",
+        "identifier" : "48BD8A1B2AB46D6900342468",
+        "name" : "TastyStocksUITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:App",
+        "identifier" : "AppTests",
+        "name" : "AppTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Coordinators",
+        "identifier" : "CoordinatorsTests",
+        "name" : "CoordinatorsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Domain",
+        "identifier" : "DomainTests",
+        "name" : "DomainTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Infrastructure",
+        "identifier" : "InfrastructureTests",
+        "name" : "InfrastructureTests"
+      }
+    }
+  ],
+  "version" : 1
+}

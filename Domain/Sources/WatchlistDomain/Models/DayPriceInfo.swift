@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct DayPriceInfo {
+public struct DayPriceInfo: Equatable {
     public let open: Double
     public let close: Double
     public let high: Double

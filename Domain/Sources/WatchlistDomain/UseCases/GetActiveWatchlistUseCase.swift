@@ -12,12 +12,15 @@ public protocol GetActiveWatchlistUseCaseProtocol: AnyObject {
 }
 
 final class GetActiveWatchlistUseCase: GetActiveWatchlistUseCaseProtocol {
-    private static let initialWatchlistName = "My first list"
-
     private let repository: WatchlistRepositoryProtocol
+    private let createInitialWatchlistUseCase: CreateInitialWatchlistUseCaseProtocol
 
-    init(repository: WatchlistRepositoryProtocol) {
+    init(
+        repository: WatchlistRepositoryProtocol,
+        createInitialWatchlistUseCase: CreateInitialWatchlistUseCaseProtocol
+    ) {
         self.repository = repository
+        self.createInitialWatchlistUseCase = createInitialWatchlistUseCase
     }
 
     func execute(completion: @escaping (Result<Watchlist?, Error>) -> Void) {
@@ -25,13 +28,7 @@ final class GetActiveWatchlistUseCase: GetActiveWatchlistUseCaseProtocol {
             if let activeWatchlist = watchlist {
                 completion(.success(activeWatchlist))
             } else {
-                let quotes = [Quote(symbol: "AAPL"), Quote(symbol: "MSFT"), Quote(symbol: "GOOG")]
-                let initialWatchlist = Watchlist(name: Self.initialWatchlistName, quotes: quotes)
-
-                self?.repository.addWatchlist(initialWatchlist)
-                self?.repository.fetchActiveWatchlist {  watchlist in
-                    completion(.success(watchlist))
-                }
+                self?.createInitialWatchlistUseCase.execute(completion: completion)
             }
         }
     }

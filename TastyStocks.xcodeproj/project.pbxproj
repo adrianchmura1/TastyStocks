@@ -11,9 +11,6 @@
 		48BD8A022AB46D6800342468 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BD8A012AB46D6800342468 /* SceneDelegate.swift */; };
 		48BD8A092AB46D6900342468 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48BD8A082AB46D6900342468 /* Assets.xcassets */; };
 		48BD8A0C2AB46D6900342468 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48BD8A0A2AB46D6900342468 /* LaunchScreen.storyboard */; };
-		48BD8A172AB46D6900342468 /* TastyStocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BD8A162AB46D6900342468 /* TastyStocksTests.swift */; };
-		48BD8A212AB46D6900342468 /* TastyStocksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BD8A202AB46D6900342468 /* TastyStocksUITests.swift */; };
-		48BD8A232AB46D6900342468 /* TastyStocksUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BD8A222AB46D6900342468 /* TastyStocksUITestsLaunchTests.swift */; };
 		48BD8A312AB4CB2600342468 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 48BD8A302AB4CB2600342468 /* SnapKit */; };
 		48BD8A332AB9DDA200342468 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BD8A322AB9DDA200342468 /* AppCoordinator.swift */; };
 		48BD8A362AB9E6F400342468 /* Domain in Resources */ = {isa = PBXBuildFile; fileRef = 48BD8A352AB9E6F400342468 /* Domain */; };
@@ -21,35 +18,14 @@
 		48BD8A412AB9F62700342468 /* Watchlist in Frameworks */ = {isa = PBXBuildFile; productRef = 48BD8A402AB9F62700342468 /* Watchlist */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		48BD8A132AB46D6900342468 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 48BD89F42AB46D6800342468 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 48BD89FB2AB46D6800342468;
-			remoteInfo = TastyStocks;
-		};
-		48BD8A1D2AB46D6900342468 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 48BD89F42AB46D6800342468 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 48BD89FB2AB46D6800342468;
-			remoteInfo = TastyStocks;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		48B6C72F2AC1B521004A6589 /* TastyStocks.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TastyStocks.xctestplan; sourceTree = "<group>"; };
 		48BD89FC2AB46D6800342468 /* TastyStocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TastyStocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48BD89FF2AB46D6800342468 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48BD8A012AB46D6800342468 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		48BD8A082AB46D6900342468 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48BD8A0B2AB46D6900342468 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48BD8A0D2AB46D6900342468 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		48BD8A122AB46D6900342468 /* TastyStocksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TastyStocksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		48BD8A162AB46D6900342468 /* TastyStocksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastyStocksTests.swift; sourceTree = "<group>"; };
-		48BD8A1C2AB46D6900342468 /* TastyStocksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TastyStocksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		48BD8A202AB46D6900342468 /* TastyStocksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastyStocksUITests.swift; sourceTree = "<group>"; };
-		48BD8A222AB46D6900342468 /* TastyStocksUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TastyStocksUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		48BD8A322AB9DDA200342468 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		48BD8A352AB9E6F400342468 /* Domain */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Domain; sourceTree = "<group>"; };
 		48BD8A372AB9E84F00342468 /* App */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = App; sourceTree = "<group>"; };
@@ -68,33 +44,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		48BD8A0F2AB46D6900342468 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		48BD8A192AB46D6900342468 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		48BD89F32AB46D6800342468 = {
 			isa = PBXGroup;
 			children = (
+				48B6C72F2AC1B521004A6589 /* TastyStocks.xctestplan */,
 				48BD8A3A2AB9EABF00342468 /* Coordinators */,
 				48BD8A382AB9E86B00342468 /* Infrastructure */,
 				48BD8A372AB9E84F00342468 /* App */,
 				48BD8A352AB9E6F400342468 /* Domain */,
 				48BD89FE2AB46D6800342468 /* TastyStocks */,
-				48BD8A152AB46D6900342468 /* TastyStocksTests */,
-				48BD8A1F2AB46D6900342468 /* TastyStocksUITests */,
 				48BD89FD2AB46D6800342468 /* Products */,
 				48BD8A3B2AB9EB4000342468 /* Frameworks */,
 			);
@@ -104,8 +65,6 @@
 			isa = PBXGroup;
 			children = (
 				48BD89FC2AB46D6800342468 /* TastyStocks.app */,
-				48BD8A122AB46D6900342468 /* TastyStocksTests.xctest */,
-				48BD8A1C2AB46D6900342468 /* TastyStocksUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,23 +80,6 @@
 				48BD8A322AB9DDA200342468 /* AppCoordinator.swift */,
 			);
 			path = TastyStocks;
-			sourceTree = "<group>";
-		};
-		48BD8A152AB46D6900342468 /* TastyStocksTests */ = {
-			isa = PBXGroup;
-			children = (
-				48BD8A162AB46D6900342468 /* TastyStocksTests.swift */,
-			);
-			path = TastyStocksTests;
-			sourceTree = "<group>";
-		};
-		48BD8A1F2AB46D6900342468 /* TastyStocksUITests */ = {
-			isa = PBXGroup;
-			children = (
-				48BD8A202AB46D6900342468 /* TastyStocksUITests.swift */,
-				48BD8A222AB46D6900342468 /* TastyStocksUITestsLaunchTests.swift */,
-			);
-			path = TastyStocksUITests;
 			sourceTree = "<group>";
 		};
 		48BD8A3B2AB9EB4000342468 /* Frameworks */ = {
@@ -172,42 +114,6 @@
 			productReference = 48BD89FC2AB46D6800342468 /* TastyStocks.app */;
 			productType = "com.apple.product-type.application";
 		};
-		48BD8A112AB46D6900342468 /* TastyStocksTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 48BD8A292AB46D6900342468 /* Build configuration list for PBXNativeTarget "TastyStocksTests" */;
-			buildPhases = (
-				48BD8A0E2AB46D6900342468 /* Sources */,
-				48BD8A0F2AB46D6900342468 /* Frameworks */,
-				48BD8A102AB46D6900342468 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				48BD8A142AB46D6900342468 /* PBXTargetDependency */,
-			);
-			name = TastyStocksTests;
-			productName = TastyStocksTests;
-			productReference = 48BD8A122AB46D6900342468 /* TastyStocksTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		48BD8A1B2AB46D6900342468 /* TastyStocksUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 48BD8A2C2AB46D6900342468 /* Build configuration list for PBXNativeTarget "TastyStocksUITests" */;
-			buildPhases = (
-				48BD8A182AB46D6900342468 /* Sources */,
-				48BD8A192AB46D6900342468 /* Frameworks */,
-				48BD8A1A2AB46D6900342468 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				48BD8A1E2AB46D6900342468 /* PBXTargetDependency */,
-			);
-			name = TastyStocksUITests;
-			productName = TastyStocksUITests;
-			productReference = 48BD8A1C2AB46D6900342468 /* TastyStocksUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -220,14 +126,6 @@
 				TargetAttributes = {
 					48BD89FB2AB46D6800342468 = {
 						CreatedOnToolsVersion = 14.3.1;
-					};
-					48BD8A112AB46D6900342468 = {
-						CreatedOnToolsVersion = 14.3.1;
-						TestTargetID = 48BD89FB2AB46D6800342468;
-					};
-					48BD8A1B2AB46D6900342468 = {
-						CreatedOnToolsVersion = 14.3.1;
-						TestTargetID = 48BD89FB2AB46D6800342468;
 					};
 				};
 			};
@@ -248,8 +146,6 @@
 			projectRoot = "";
 			targets = (
 				48BD89FB2AB46D6800342468 /* TastyStocks */,
-				48BD8A112AB46D6900342468 /* TastyStocksTests */,
-				48BD8A1B2AB46D6900342468 /* TastyStocksUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -262,20 +158,6 @@
 				48BD8A362AB9E6F400342468 /* Domain in Resources */,
 				48BD8A0C2AB46D6900342468 /* LaunchScreen.storyboard in Resources */,
 				48BD8A092AB46D6900342468 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		48BD8A102AB46D6900342468 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		48BD8A1A2AB46D6900342468 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,37 +174,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		48BD8A0E2AB46D6900342468 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				48BD8A172AB46D6900342468 /* TastyStocksTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		48BD8A182AB46D6900342468 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				48BD8A212AB46D6900342468 /* TastyStocksUITests.swift in Sources */,
-				48BD8A232AB46D6900342468 /* TastyStocksUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		48BD8A142AB46D6900342468 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 48BD89FB2AB46D6800342468 /* TastyStocks */;
-			targetProxy = 48BD8A132AB46D6900342468 /* PBXContainerItemProxy */;
-		};
-		48BD8A1E2AB46D6900342468 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 48BD89FB2AB46D6800342468 /* TastyStocks */;
-			targetProxy = 48BD8A1D2AB46D6900342468 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		48BD8A0A2AB46D6900342468 /* LaunchScreen.storyboard */ = {
@@ -506,82 +358,6 @@
 			};
 			name = Release;
 		};
-		48BD8A2A2AB46D6900342468 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L4BN44YZ5X;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.adrianchmura.tastystocks.TastyStocksTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TastyStocks.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TastyStocks";
-			};
-			name = Debug;
-		};
-		48BD8A2B2AB46D6900342468 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L4BN44YZ5X;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.adrianchmura.tastystocks.TastyStocksTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TastyStocks.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TastyStocks";
-			};
-			name = Release;
-		};
-		48BD8A2D2AB46D6900342468 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L4BN44YZ5X;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.adrianchmura.tastystocks.TastyStocksUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = TastyStocks;
-			};
-			name = Debug;
-		};
-		48BD8A2E2AB46D6900342468 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L4BN44YZ5X;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.adrianchmura.tastystocks.TastyStocksUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = TastyStocks;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -599,24 +375,6 @@
 			buildConfigurations = (
 				48BD8A272AB46D6900342468 /* Debug */,
 				48BD8A282AB46D6900342468 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		48BD8A292AB46D6900342468 /* Build configuration list for PBXNativeTarget "TastyStocksTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				48BD8A2A2AB46D6900342468 /* Debug */,
-				48BD8A2B2AB46D6900342468 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		48BD8A2C2AB46D6900342468 /* Build configuration list for PBXNativeTarget "TastyStocksUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				48BD8A2D2AB46D6900342468 /* Debug */,
-				48BD8A2E2AB46D6900342468 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

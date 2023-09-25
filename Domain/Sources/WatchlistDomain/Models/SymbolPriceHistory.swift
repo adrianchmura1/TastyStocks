@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct SymbolPriceHistory {
+public struct SymbolPriceHistory: Equatable {
     public let days: [DayPriceInfo]
 
     public init(days: [DayPriceInfo]) {

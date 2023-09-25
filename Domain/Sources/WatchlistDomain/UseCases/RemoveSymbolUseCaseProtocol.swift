@@ -19,6 +19,7 @@ final class RemoveSymbolUseCase: RemoveSymbolUseCaseProtocol {
     }
 
     func execute(for symbol: String) {
+        guard !symbol.isEmpty else { return }
         repository.removeFromActive(symbol: symbol)
     }
 }
