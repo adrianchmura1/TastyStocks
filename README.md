@@ -1,4 +1,4 @@
-# TastyStocks
+eee# TastyStocks
 
 TastyStocks is a Swift iOS application for tracking and managing stock portfolios. It is fully configured with Swift Package Manager (SPM) for managing both local packages and third-party libraries.
 
@@ -25,9 +25,10 @@ TastyStocks is organized into several modules:
 
 1. Clone the repository to your local machine.
 2. Open the project in Xcode:
-```Copy code
+```shell
 cd TastyStocks
-open TastyStocks.xcodeproj```
+open TastyStocks.xcodeproj
+```
 
 ### Running the App
 
