@@ -9,7 +9,6 @@
     }
   ],
   "defaultOptions" : {
-    "codeCoverage" : false,
     "targetForVariableExpansion" : {
       "containerPath" : "container:TastyStocks.xcodeproj",
       "identifier" : "48BD89FB2AB46D6800342468",
@@ -17,22 +16,6 @@
     }
   },
   "testTargets" : [
-    {
-      "parallelizable" : true,
-      "target" : {
-        "containerPath" : "container:TastyStocks.xcodeproj",
-        "identifier" : "48BD8A112AB46D6900342468",
-        "name" : "TastyStocksTests"
-      }
-    },
-    {
-      "parallelizable" : true,
-      "target" : {
-        "containerPath" : "container:TastyStocks.xcodeproj",
-        "identifier" : "48BD8A1B2AB46D6900342468",
-        "name" : "TastyStocksUITests"
-      }
-    },
     {
       "target" : {
         "containerPath" : "container:App",

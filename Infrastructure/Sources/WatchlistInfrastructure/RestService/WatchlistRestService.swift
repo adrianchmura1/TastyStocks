@@ -14,9 +14,9 @@ protocol WatchlistRestServiceProtocol {
 }
 
 class WatchlistRestService: WatchlistRestServiceProtocol {
-    private let networkService: NetworkService
+    private let networkService: NetworkServiceProtocol
 
-    init(networkService: NetworkService) {
+    init(networkService: NetworkServiceProtocol) {
         self.networkService = networkService
     }
 
@@ -24,7 +24,7 @@ class WatchlistRestService: WatchlistRestServiceProtocol {
         let symbolsQueryItemValue = watchlist.quotes.map({ $0.symbol }).joined(separator: ",")
         let queryItemSymbols = URLQueryItem(name: "symbols", value: symbolsQueryItemValue)
         let queryItemTypes = URLQueryItem(name: "types", value: "quote")
-        let queryItemToken = URLQueryItem(name: "token", value: "pk_b55956aac6534be093558f56df50d784")
+        let queryItemToken = URLQueryItem(name: "token", value: EnvironmentManager.shared.iexToken)
 
         var components = URLComponents()
         components.scheme = "https"
