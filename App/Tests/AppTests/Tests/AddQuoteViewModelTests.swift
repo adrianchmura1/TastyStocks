@@ -12,12 +12,19 @@ import WatchlistDomain
 final class AddQuoteViewModelTests: XCTestCase {
     var viewModel: AddQuoteViewModel!
     var mockSearchQuotesUseCase: MockSearchQuotesUseCase!
+    var mockBackgroundQueue: MockQueue!
+    var mockMainQueue: MockQueue!
 
     override func setUp() {
         super.setUp()
 
         mockSearchQuotesUseCase = MockSearchQuotesUseCase()
+        mockBackgroundQueue = MockQueue()
+        mockMainQueue = MockQueue()
+
         viewModel = AddQuoteViewModel(
+            backgroundQueue: mockBackgroundQueue,
+            mainQueue: mockMainQueue,
             interactor: AddQuoteInteractor(
                 searchQuotesUseCase: mockSearchQuotesUseCase,
                 addSymbolUseCaseProtocol: MockAddSymbolUseCase()
@@ -46,10 +53,6 @@ final class AddQuoteViewModelTests: XCTestCase {
         mockSearchQuotesUseCase.results = .success(mockedQuotes)
         let expectation = XCTestExpectation(description: "Filter Stock Quotes")
 
-        // Act
-        viewModel.filterStockQuotes(with: searchText)
-
-        // Assert
         viewModel.action = { action in
             switch action {
             case .reload:
@@ -61,6 +64,13 @@ final class AddQuoteViewModelTests: XCTestCase {
                 break
             }
         }
+
+        // Act
+        viewModel.filterStockQuotes(with: searchText)
+
+        // Assert
+        XCTAssertTrue(mockBackgroundQueue.asyncCalled)
+        XCTAssertTrue(mockMainQueue.asyncCalled)
 
         wait(for: [expectation], timeout: 1.0)
     }

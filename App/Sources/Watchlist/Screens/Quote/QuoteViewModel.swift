@@ -26,12 +26,21 @@ final class QuoteViewModel {
     }
 
     private let interactor: QuoteInteractor
+    private let backgroundQueue: Queue
+    private let mainQueue: Queue
 
     private var timer: Timer?
 
-    init(symbol: String, interactor: QuoteInteractor) {
+    init(
+        symbol: String,
+        interactor: QuoteInteractor,
+        backgroundQueue: Queue = DefaultBackgroundQueue(),
+        mainQueue: Queue = DefaultMainQueue()
+    ) {
         self.symbol = symbol
         self.interactor = interactor
+        self.backgroundQueue = backgroundQueue
+        self.mainQueue = mainQueue
     }
 
     func onAppear() {
@@ -55,10 +64,10 @@ final class QuoteViewModel {
     }
 
     private func fetchChartData() {
-        DispatchQueue.global().async {
+        backgroundQueue.async {
             self.interactor.fetchHistory(for: self.symbol) { [weak self] result in
-                DispatchQueue.main.async {
-                    guard let self else { return }
+                self?.mainQueue.async { // Execute on main queue
+                    guard let self = self else { return }
                     switch result {
                     case .success(let priceHistory):
                         self.action?(.refreshChart(self.mapToCandleChartDataSet(priceHistory: priceHistory)))
@@ -73,9 +82,9 @@ final class QuoteViewModel {
     }
 
     private func fetchQuote() {
-        DispatchQueue.global().async {
+        backgroundQueue.async {
             self.interactor.getQuote(for: self.symbol) { [weak self] result in
-                DispatchQueue.main.async {
+                self?.mainQueue.async { // Execute on main queue
                     switch result {
                     case .success(let quote):
                         self?.action?(.updateQuote(QuoteMapper.mapToQuotePresentable(quote: quote)))

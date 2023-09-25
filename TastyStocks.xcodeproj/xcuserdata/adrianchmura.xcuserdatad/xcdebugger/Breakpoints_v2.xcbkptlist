@@ -162,5 +162,165 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AEED6C52-2AE7-453D-AD26-7686E78EC9CB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "App/Tests/AppTests/Tests/AddQuoteViewModelTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "testFilterStockQuotesWithEmptyText()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ADAC75CE-A7F9-4F41-94B9-0439EE8394FE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "App/Tests/AppTests/Tests/AddQuoteViewModelTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "testFilterStockQuotesWithNonEmptyText()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B849D20C-1EF2-49DA-9F0B-3C1E634C0683"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "App/Sources/Watchlist/Screens/AddQuote/AddQuoteViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "filterStockQuotes(with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2A9971A5-BEDF-4E9B-982D-C8FC76294E4B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "App/Sources/Watchlist/Screens/AddQuote/AddQuoteViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "filterStockQuotes(with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2675557B-E26E-4EE8-8D17-C117EC313889"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "App/Sources/Watchlist/Screens/AddQuote/AddQuoteViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "filterStockQuotes(with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2675557B-E26E-4EE8-8D17-C117EC313889 - 3b8ec95bd67a7550"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;WatchlistDomain.QuoteSearchResult&gt;, Swift.Error&gt;) -&gt; () in closure #1 () -&gt; () in Watchlist.AddQuoteViewModel.filterStockQuotes(with: Swift.String) -&gt; ()"
+                  moduleName = "AppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianchmura/devs/TastyStocks/App/Sources/Watchlist/Screens/AddQuote/AddQuoteViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "480">
+               </Location>
+               <Location
+                  uuid = "2675557B-E26E-4EE8-8D17-C117EC313889 - c2394dd26980261f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in closure #1 (Swift.Result&lt;Swift.Array&lt;WatchlistDomain.QuoteSearchResult&gt;, Swift.Error&gt;) -&gt; () in closure #1 () -&gt; () in Watchlist.AddQuoteViewModel.filterStockQuotes(with: Swift.String) -&gt; ()"
+                  moduleName = "AppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianchmura/devs/TastyStocks/App/Sources/Watchlist/Screens/AddQuote/AddQuoteViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "49DE97C8-2E1D-4610-84BB-5E0683E39C16"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "App/Sources/Watchlist/Screens/AddQuote/AddQuoteViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "filterStockQuotes(with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "49DE97C8-2E1D-4610-84BB-5E0683E39C16 - 3b8ec95bd67a7296"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;WatchlistDomain.QuoteSearchResult&gt;, Swift.Error&gt;) -&gt; () in closure #1 () -&gt; () in Watchlist.AddQuoteViewModel.filterStockQuotes(with: Swift.String) -&gt; ()"
+                  moduleName = "AppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianchmura/devs/TastyStocks/App/Sources/Watchlist/Screens/AddQuote/AddQuoteViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "300">
+               </Location>
+               <Location
+                  uuid = "49DE97C8-2E1D-4610-84BB-5E0683E39C16 - 41ae191ac05a149f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (WatchlistDomain.QuoteSearchResult) -&gt; Watchlist.StockQuote in closure #1 (Swift.Result&lt;Swift.Array&lt;WatchlistDomain.QuoteSearchResult&gt;, Swift.Error&gt;) -&gt; () in closure #1 () -&gt; () in Watchlist.AddQuoteViewModel.filterStockQuotes(with: Swift.String) -&gt; ()"
+                  moduleName = "AppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adrianchmura/devs/TastyStocks/App/Sources/Watchlist/Screens/AddQuote/AddQuoteViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
