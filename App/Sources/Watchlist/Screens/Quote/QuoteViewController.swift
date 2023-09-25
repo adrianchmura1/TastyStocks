@@ -69,7 +69,11 @@ final class QuoteViewController: UIViewController {
     }
 
     private func setupUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = ColorPaletteManager.shared.currentPalette.backgroundColor
+
+        symbolLabel.textColor = ColorPaletteManager.shared.currentPalette.textColor
+        bidLabel.textColor = ColorPaletteManager.shared.currentPalette.textColor
+        askLabel.textColor = ColorPaletteManager.shared.currentPalette.textColor
 
         symbolLabel.text = viewModel.symbol
 

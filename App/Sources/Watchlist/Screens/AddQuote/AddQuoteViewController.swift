@@ -68,7 +68,7 @@ final class AddQuoteViewController: UIViewController {
     }
 
     private func setupUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = ColorPaletteManager.shared.currentPalette.backgroundColor
         setupSearchBar()
         setupTableView()
         setupSpinner()

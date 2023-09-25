@@ -49,7 +49,7 @@ final class WatchListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        view.backgroundColor = ColorPaletteManager.shared.currentPalette.backgroundColor
 
         setupNavigationBar()
         layout()
