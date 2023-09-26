@@ -80,7 +80,7 @@ final class WatchListViewController: UIViewController {
         super.traitCollectionDidChange(previousTraitCollection)
 
         setPalette()
-        
+
         if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
             tableView.reloadData()
         }
