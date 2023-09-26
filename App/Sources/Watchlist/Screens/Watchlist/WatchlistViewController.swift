@@ -49,8 +49,6 @@ final class WatchListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = ColorPaletteManager.shared.currentPalette.backgroundColor
-
         setupNavigationBar()
         layout()
 
@@ -74,7 +72,18 @@ final class WatchListViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setPalette()
         viewModel.onAppear()
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        setPalette()
+        
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            tableView.reloadData()
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -115,5 +124,14 @@ final class WatchListViewController: UIViewController {
     @objc
     private func watchlistsTapped() {
         action?(.editWatchlistsTapped)
+    }
+
+    private func setPalette() {
+        if traitCollection.userInterfaceStyle == .dark {
+            ColorPaletteManager.shared.switchToDarkMode()
+        } else {
+            ColorPaletteManager.shared.switchToDefault()
+        }
+        view.backgroundColor = ColorPaletteManager.shared.currentPalette.backgroundColor
     }
 }

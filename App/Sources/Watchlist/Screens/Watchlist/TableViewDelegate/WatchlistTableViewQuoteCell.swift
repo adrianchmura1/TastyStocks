@@ -29,10 +29,10 @@ final class WatchlistTableViewQuoteCell: UITableViewCell {
         lastPriceLabel.text = lastPrice
         bidPriceLabel.text = bidPrice
         askPriceLabel.text = askPrice
+        updateColors()
     }
 
     private func setupUI() {
-        contentView.backgroundColor = ColorPaletteManager.shared.currentPalette.backgroundColor
         contentView.addSubview(symbolLabel)
         contentView.addSubview(lastPriceLabel)
         contentView.addSubview(bidPriceLabel)
@@ -47,6 +47,10 @@ final class WatchlistTableViewQuoteCell: UITableViewCell {
         lastPriceLabel.textAlignment = .right
         bidPriceLabel.textAlignment = .right
         askPriceLabel.textAlignment = .right
+    }
+
+    private func updateColors() {
+        contentView.backgroundColor = ColorPaletteManager.shared.currentPalette.backgroundColor
 
         symbolLabel.textColor = ColorPaletteManager.shared.currentPalette.textColor
         lastPriceLabel.textColor = ColorPaletteManager.shared.currentPalette.textColor
