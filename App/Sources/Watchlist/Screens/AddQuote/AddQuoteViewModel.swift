@@ -13,6 +13,7 @@ final class AddQuoteViewModel {
         case finished
         case startLoading
         case finishLoading
+        case showError
     }
 
     var action: ((Action) -> Void)?
@@ -47,8 +48,7 @@ final class AddQuoteViewModel {
                 case .success(let results):
                     self.filteredQuotes = results.map { StockQuote(symbol: $0.symbol, name: $0.name) }
                 case .failure:
-                    // TODO: Show error state
-                    break
+                    self.action?(.showError)
                 }
 
                 mainQueue.async {

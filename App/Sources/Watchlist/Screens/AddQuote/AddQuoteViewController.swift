@@ -33,6 +33,16 @@ final class AddQuoteViewController: UIViewController {
         return spinner
     }()
 
+    private lazy var errorView: UILabel = {
+        let errorView = UILabel()
+        errorView.backgroundColor = .red
+        errorView.textAlignment = .center
+        errorView.text = "Error when loading data"
+        errorView.textColor = ColorPaletteManager.shared.currentPalette.textColor
+        errorView.isHidden = true
+        return errorView
+    }()
+
     private let viewModel: AddQuoteViewModel
 
     init(viewModel: AddQuoteViewModel) {
@@ -51,6 +61,8 @@ final class AddQuoteViewController: UIViewController {
         viewModel.action = { [weak self] action in
             switch action {
             case .reload:
+                self?.tableView.isHidden = false
+                self?.errorView.isHidden = true
                 self?.tableView.reloadData()
             case .finished:
                 self?.action?(.finished)
@@ -58,6 +70,8 @@ final class AddQuoteViewController: UIViewController {
                 self?.setLoading(true)
             case .finishLoading:
                 self?.setLoading(false)
+            case .showError:
+                self?.showError()
             }
         }
     }
@@ -70,7 +84,7 @@ final class AddQuoteViewController: UIViewController {
     private func setupUI() {
         view.backgroundColor = ColorPaletteManager.shared.currentPalette.backgroundColor
         setupSearchBar()
-        setupTableView()
+        setupViews()
         setupSpinner()
     }
 
@@ -85,15 +99,23 @@ final class AddQuoteViewController: UIViewController {
         }
     }
 
-    private func setupTableView() {
+    private func setupViews() {
         tableView.delegate = tableDelegate
         tableView.dataSource = tableDelegate
+
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         view.addSubview(tableView)
+        view.addSubview(errorView)
 
         tableView.snp.makeConstraints { make in
             make.top.equalTo(searchBar.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
+        }
+
+        errorView.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+            $0.width.equalTo(300)
+            $0.height.equalTo(80)
         }
     }
 
@@ -103,6 +125,11 @@ final class AddQuoteViewController: UIViewController {
         loadingSpinner.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+
+    private func showError() {
+        errorView.isHidden = false
+        tableView.isHidden = true
     }
 }
 

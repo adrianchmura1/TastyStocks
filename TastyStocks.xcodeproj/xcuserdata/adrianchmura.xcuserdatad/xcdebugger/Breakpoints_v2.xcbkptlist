@@ -122,8 +122,8 @@
             filePath = "App/Sources/Watchlist/Screens/AddQuote/AddQuoteViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "filterStockQuotes(with:)"
             landmarkType = "7">
             <Locations>
@@ -170,8 +170,8 @@
             filePath = "App/Sources/Watchlist/Screens/AddQuote/AddQuoteViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "filterStockQuotes(with:)"
             landmarkType = "7">
             <Locations>
@@ -248,8 +248,8 @@
             filePath = "App/Sources/Watchlist/Screens/AddQuote/AddQuoteViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "filterStockQuotes(with:)"
             landmarkType = "7">
             <Locations>
@@ -328,8 +328,8 @@
             filePath = "App/Sources/Watchlist/Screens/AddQuote/AddQuoteViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "filterStockQuotes(with:)"
             landmarkType = "7">
             <Locations>
@@ -502,8 +502,8 @@
             filePath = "App/Sources/Watchlist/Screens/AddQuote/AddQuoteViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "filterStockQuotes(with:)"
             landmarkType = "7">
             <Locations>
