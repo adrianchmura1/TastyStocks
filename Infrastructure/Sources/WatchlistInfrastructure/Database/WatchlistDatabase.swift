@@ -68,6 +68,11 @@ final class WatchlistDatabase: WatchlistDatabaseProtocol {
         guard let activeWatchlist else { return }
 
         var active = activeWatchlist
+
+        guard !active.quotes.contains(where: {
+            $0.symbol == symbol
+        }) else { return }
+
         active.add(quote: Quote(symbol: symbol))
 
         var updatedWatchlists = watchlists
