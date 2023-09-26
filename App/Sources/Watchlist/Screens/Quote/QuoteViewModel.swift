@@ -15,6 +15,7 @@ final class QuoteViewModel {
         case startLoading
         case finishLoading
         case updateQuote(QuotePresentable)
+        case showError
     }
 
     let symbol: String
@@ -72,8 +73,7 @@ final class QuoteViewModel {
                     case .success(let priceHistory):
                         self.action?(.refreshChart(self.mapToCandleChartDataSet(priceHistory: priceHistory)))
                     case .failure:
-                        // TODO: Show error view
-                        print("Error")
+                        self.action?(.showError)
                     }
                     self.action?(.finishLoading)
                 }
@@ -84,13 +84,12 @@ final class QuoteViewModel {
     private func fetchQuote() {
         backgroundQueue.async {
             self.interactor.getQuote(for: self.symbol) { [weak self] result in
-                self?.mainQueue.async { // Execute on main queue
+                self?.mainQueue.async {
                     switch result {
                     case .success(let quote):
                         self?.action?(.updateQuote(QuoteMapper.mapToQuotePresentable(quote: quote)))
                     case .failure:
-                        // TODO: Handle error
-                        break
+                        self?.action?(.showError)
                     }
                 }
             }

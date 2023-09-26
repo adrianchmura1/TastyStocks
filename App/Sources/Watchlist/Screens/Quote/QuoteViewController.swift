@@ -25,6 +25,16 @@ final class QuoteViewController: UIViewController {
         return spinner
     }()
 
+    private lazy var errorView: UILabel = {
+        let errorView = UILabel()
+        errorView.backgroundColor = .red
+        errorView.textAlignment = .center
+        errorView.text = "Error when loading data"
+        errorView.textColor = ColorPaletteManager.shared.currentPalette.textColor
+        errorView.isHidden = true
+        return errorView
+    }()
+
     init(viewModel: QuoteViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -50,6 +60,8 @@ final class QuoteViewController: UIViewController {
                 self?.setLoading(false)
             case .updateQuote(let quotePresentable):
                 self?.updateLabels(with: quotePresentable)
+            case .showError:
+                self?.showError()
             }
         }
 
@@ -66,6 +78,11 @@ final class QuoteViewController: UIViewController {
     private func updateLabels(with model: QuotePresentable) {
         bidLabel.text = "Bid Price: \(model.bidPrice)"
         askLabel.text = "Ask Price: \(model.askPrice)"
+
+        bidLabel.isHidden = false
+        askLabel.isHidden = false
+        chartView.isHidden = false
+        errorView.isHidden = true
     }
 
     private func setupUI() {
@@ -82,6 +99,7 @@ final class QuoteViewController: UIViewController {
         view.addSubview(askLabel)
         view.addSubview(chartView)
         view.addSubview(loadingSpinner)
+        view.addSubview(errorView)
 
         bidLabel.text = "Bid Price: "
         askLabel.text = "Ask Price: "
@@ -109,6 +127,12 @@ final class QuoteViewController: UIViewController {
         loadingSpinner.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+
+        errorView.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+            $0.width.equalTo(300)
+            $0.height.equalTo(80)
+        }
     }
 
     private func configureChartData(with dataSet: CandleChartDataSet) {
@@ -123,5 +147,12 @@ final class QuoteViewController: UIViewController {
 
         chartView.chartDescription.text = "Stock Price Candlestick Chart"
         chartView.legend.enabled = false
+    }
+
+    private func showError() {
+        errorView.isHidden = false
+        bidLabel.isHidden = true
+        askLabel.isHidden = true
+        chartView.isHidden = true
     }
 }

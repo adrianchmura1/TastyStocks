@@ -56,17 +56,14 @@ final class WatchlistEditViewController: UIViewController {
 
     private func setupTableView() {
         view.addSubview(tableView)
+
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(WatchlistTableViewCell.self, forCellReuseIdentifier: "WatchlistCell")
 
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
+        tableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 
     @objc private func addButtonTapped() {
