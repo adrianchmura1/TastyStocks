@@ -15,6 +15,7 @@ final class WatchListViewModel {
         case hideLoading
         case changeNavigationTitle(String)
         case goToQuotes(String)
+        case showError
     }
 
     var action: ((Action) -> Void)?
@@ -24,8 +25,13 @@ final class WatchListViewModel {
     private var timer: Timer?
     private var currentWatchlist: WatchlistPresentable?
 
-    init(interactor: WatchlistInteractor) {
+    private let mainQueue: Queue
+    private let backgroundQueue: Queue
+
+    init(mainQueue: Queue = DefaultMainQueue(), backgroundQueue: Queue = DefaultBackgroundQueue(), interactor: WatchlistInteractor) {
         self.interactor = interactor
+        self.mainQueue = mainQueue
+        self.backgroundQueue = backgroundQueue
     }
 
     func onAppear() {
@@ -66,7 +72,7 @@ final class WatchListViewModel {
     }
 
     private func reloadActiveWatchlist() {
-        DispatchQueue.global().async {
+        backgroundQueue.async {
             self.interactor.getActiveWatchlist { [weak self] result in
                 switch result {
                 case .success(let watchlist):
@@ -74,15 +80,16 @@ final class WatchListViewModel {
 
                     let mappedWatchlist = WatchlistMapper.mapToWatchlistPresentable(watchlist: watchlist)
 
-                    DispatchQueue.main.async {
+                    mainQueue.async {
                         self.currentWatchlist = mappedWatchlist
                         self.action?(.changeNavigationTitle(mappedWatchlist.name))
                         self.action?(.reload)
                         self.action?(.hideLoading)
                     }
-                case .failure(let error):
-                    print(error)
-                    // TODO: Show error state
+                case .failure:
+                    self?.mainQueue.async {
+                        self?.action?(.showError)
+                    }
                 }
             }
         }

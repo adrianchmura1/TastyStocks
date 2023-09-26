@@ -35,6 +35,16 @@ final class WatchListViewController: UIViewController {
         return spinner
     }()
 
+    private lazy var errorView: UILabel = {
+        let errorView = UILabel()
+        errorView.backgroundColor = .red
+        errorView.textAlignment = .center
+        errorView.text = "Error when loading data"
+        errorView.textColor = ColorPaletteManager.shared.currentPalette.textColor
+        errorView.isHidden = true
+        return errorView
+    }()
+
     private var tableViewDelegate: WatchListTableViewDelegate?
 
     init(viewModel: WatchListViewModel) {
@@ -55,6 +65,7 @@ final class WatchListViewController: UIViewController {
         viewModel.action = { [weak self] actionType in
             switch actionType {
             case .reload:
+                self?.errorView.isHidden = true
                 self?.tableView.reloadData()
             case .showLoading:
                 self?.setLoading(true)
@@ -64,6 +75,8 @@ final class WatchListViewController: UIViewController {
                 self?.navigationItem.title = title
             case .goToQuotes(let symbol):
                 self?.action?(.goToQuotes(symbol: symbol))
+            case .showError:
+                self?.showError()
             }
         }
 
@@ -94,6 +107,7 @@ final class WatchListViewController: UIViewController {
     private func setLoading(_ loading: Bool) {
         loadingSpinner.isHidden = !loading
         tableView.isHidden = loading
+        errorView.isHidden = true
     }
 
     private func setupNavigationBar() {
@@ -106,6 +120,7 @@ final class WatchListViewController: UIViewController {
     private func layout() {
         view.addSubview(tableView)
         view.addSubview(loadingSpinner)
+        view.addSubview(errorView)
 
         tableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -113,6 +128,12 @@ final class WatchListViewController: UIViewController {
 
         loadingSpinner.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+
+        errorView.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+            $0.width.equalTo(300)
+            $0.height.equalTo(80)
         }
     }
 
@@ -133,5 +154,10 @@ final class WatchListViewController: UIViewController {
             ColorPaletteManager.shared.switchToDefault()
         }
         view.backgroundColor = ColorPaletteManager.shared.currentPalette.backgroundColor
+    }
+
+    private func showError() {
+        errorView.isHidden = false
+        tableView.isHidden = true
     }
 }
