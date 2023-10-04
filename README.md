@@ -29,6 +29,8 @@ TastyStocks is organized into several modules:
 cd TastyStocks
 open TastyStocks.xcodeproj
 ```
+3. Update `iexToken` property of `Infrastructure/Sources/Environment/EnvironmentManager.swift` to match a valid one
+
 
 ### Running the App
 
