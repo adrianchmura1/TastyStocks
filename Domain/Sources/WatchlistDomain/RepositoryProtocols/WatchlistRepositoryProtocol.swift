@@ -11,7 +11,7 @@ public protocol WatchlistRepositoryProtocol: AnyObject {
     var watchlists: [Watchlist] { get }
     var activeWatchlistId: String? { get }
 
-    func fetchActiveWatchlist(completion: @escaping (WatchlistDomain.Watchlist?) -> Void)
+    func fetchActiveWatchlist(completion: @escaping (Result<WatchlistDomain.Watchlist?, Error>) -> Void)
     func addWatchlist(_ watchlist: WatchlistDomain.Watchlist)
     func addToActiveWatchlist(symbol: String)
     func removeFromActive(symbol: String)

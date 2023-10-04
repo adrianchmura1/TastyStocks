@@ -24,11 +24,16 @@ final class GetActiveWatchlistUseCase: GetActiveWatchlistUseCaseProtocol {
     }
 
     func execute(completion: @escaping (Result<Watchlist?, Error>) -> Void) {
-        repository.fetchActiveWatchlist { [weak self] watchlist in
-            if let activeWatchlist = watchlist {
-                completion(.success(activeWatchlist))
-            } else {
-                self?.createInitialWatchlistUseCase.execute(completion: completion)
+        repository.fetchActiveWatchlist { [weak self] result in
+            switch result {
+            case .success(let watchlist):
+                if let activeWatchlist = watchlist {
+                    completion(.success(activeWatchlist))
+                } else {
+                    self?.createInitialWatchlistUseCase.execute(completion: completion)
+                }
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }

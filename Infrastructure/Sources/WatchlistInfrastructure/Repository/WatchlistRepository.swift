@@ -24,14 +24,14 @@ final class WatchlistRepository: WatchlistRepositoryProtocol {
         self.restService = restService
     }
 
-    func fetchActiveWatchlist(completion: @escaping (WatchlistDomain.Watchlist?) -> Void) {
+    func fetchActiveWatchlist(completion: @escaping (Result<WatchlistDomain.Watchlist?, Error>) -> Void) {
         guard let activeWatchlist = database.activeWatchlist else {
-            completion(nil)
+            completion(.success(nil))
             return
         }
 
         guard !activeWatchlist.quotes.isEmpty else {
-            completion(activeWatchlist)
+            completion(.success(activeWatchlist))
             return
         }
 
@@ -45,10 +45,9 @@ final class WatchlistRepository: WatchlistRepositoryProtocol {
                     mapper.map(quoteResponse: $0)
                 }
                 watchlist.update(quotes: quotes)
-                completion(watchlist)
+                completion(.success(watchlist))
             case .failure(let error):
-                print(error)
-                // change return type to result and return error     in result
+                completion(.failure(error))
             }
         }
     }

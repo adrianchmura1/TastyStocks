@@ -25,8 +25,8 @@ final class CreateInitialWatchlistUseCase: CreateInitialWatchlistUseCaseProtocol
         let initialWatchlist = Watchlist(name: Self.initialWatchlistName, quotes: quotes)
 
         repository.addWatchlist(initialWatchlist)
-        repository.fetchActiveWatchlist { watchlist in
-            completion(.success(watchlist))
+        repository.fetchActiveWatchlist { result in
+           completion(result)
         }
     }
 }
