@@ -27,8 +27,8 @@ final class MockWatchlistRepository: WatchlistRepositoryProtocol {
     var removeFromActiveSymbol: String?
     var removeWatchlistID: String?
 
-    func fetchActiveWatchlist(completion: @escaping (WatchlistDomain.Watchlist?) -> Void) {
-        completion(mockedWatchlist)
+    func fetchActiveWatchlist(completion: @escaping (Result<WatchlistDomain.Watchlist?, Error>) -> Void) {
+        completion(.success(mockedWatchlist))
     }
 
     func addWatchlist(_ watchlist: WatchlistDomain.Watchlist) {

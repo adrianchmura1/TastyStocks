@@ -33,10 +33,15 @@ final class WatchlistRepositoryTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Fetch active watchlist completion")
 
         // Act
-        repository.fetchActiveWatchlist { watchlist in
+        repository.fetchActiveWatchlist { result in
             // Assert
-            XCTAssertEqual(watchlist, activeWatchlist)
-            expectation.fulfill()
+            switch result {
+            case .success(let watchlist):
+                XCTAssertEqual(watchlist, activeWatchlist)
+                expectation.fulfill()
+            case .failure:
+                XCTFail()
+            }
         }
 
         wait(for: [expectation], timeout: 1.0)
