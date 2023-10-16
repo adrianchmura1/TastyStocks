@@ -67,7 +67,7 @@ final class AddQuoteViewModel {
             }
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: searchWorkItem!)
+        mainQueue.asyncAfter(deadline: .now() + 0.5, execute: searchWorkItem!)
     }
 
     func didSelectRow(at indexPath: IndexPath) {

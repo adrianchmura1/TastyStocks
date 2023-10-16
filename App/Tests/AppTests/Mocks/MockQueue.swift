@@ -15,4 +15,8 @@ final class MockQueue: Queue {
         asyncCalled = true
         work()
     }
+
+    func asyncAfter(deadline: DispatchTime, execute: DispatchWorkItem) {
+        execute.perform()
+    }
 }
