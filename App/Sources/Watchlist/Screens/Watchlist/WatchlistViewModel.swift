@@ -71,9 +71,18 @@ final class WatchListViewModel {
         reloadActiveWatchlist()
     }
 
+    private var isReloading = false
+
     private func reloadActiveWatchlist() {
+        guard !isReloading else { return }
+
+        isReloading = true
+
         backgroundQueue.async {
             self.interactor.getActiveWatchlist { [weak self] result in
+
+                self?.isReloading = false
+
                 switch result {
                 case .success(let watchlist):
                     guard let self, let watchlist else { return }

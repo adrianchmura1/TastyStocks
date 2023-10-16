@@ -29,7 +29,7 @@ public final class EnvironmentManager {
     }
 
     public var iexToken: String {
-        "pk_9b6a666f035443a294d41a4a4cfd7972"
+        "pk_1eb99b892c74477b86c5cb6289878474"
     }
 
     public var iexBatchQuotePath: String {
