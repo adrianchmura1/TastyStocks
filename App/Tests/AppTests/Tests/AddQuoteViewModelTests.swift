@@ -37,7 +37,7 @@ final class AddQuoteViewModelTests: XCTestCase {
         let searchText = ""
 
         // Act
-        viewModel.filterStockQuotes(with: searchText)
+        viewModel.textDidChange(with: searchText)
 
         // Assert
         XCTAssertEqual(self.viewModel.filteredQuotes, [])
@@ -66,7 +66,7 @@ final class AddQuoteViewModelTests: XCTestCase {
         }
 
         // Act
-        viewModel.filterStockQuotes(with: searchText)
+        viewModel.textDidChange(with: searchText)
 
         // Assert
         XCTAssertTrue(mockBackgroundQueue.asyncCalled)

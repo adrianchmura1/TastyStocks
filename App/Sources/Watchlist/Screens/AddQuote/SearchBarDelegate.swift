@@ -15,6 +15,6 @@ final class SearchBarDelegate: NSObject, UISearchBarDelegate {
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel.filterStockQuotes(with: searchText)
+        viewModel.textDidChange(with: searchText)
     }
 }

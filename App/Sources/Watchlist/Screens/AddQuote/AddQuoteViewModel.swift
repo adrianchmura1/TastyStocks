@@ -33,30 +33,41 @@ final class AddQuoteViewModel {
         self.mainQueue = mainQueue
     }
 
-    func filterStockQuotes(with searchText: String) {
+    private var searchWorkItem: DispatchWorkItem?
+
+    func textDidChange(with searchText: String) {
+        searchWorkItem?.cancel()
+
         guard !searchText.isEmpty else {
             filteredQuotes = []
             self.action?(.reload)
             return
         }
 
-        action?(.startLoading)
-        backgroundQueue.async {
-            self.interactor.search(text: searchText) { [weak self] result in
-                guard let self else { return }
-                switch result {
-                case .success(let results):
-                    self.filteredQuotes = results.map { StockQuote(symbol: $0.symbol, name: $0.name) }
-                case .failure:
-                    self.action?(.showError)
-                }
+        searchWorkItem = DispatchWorkItem { [weak self] in
+            guard let self = self else { return }
 
-                mainQueue.async {
-                    self.action?(.reload)
-                    self.action?(.finishLoading)
+            self.action?(.startLoading)
+
+            backgroundQueue.async {
+                self.interactor.search(text: searchText) { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(let results):
+                        self.filteredQuotes = results.map { StockQuote(symbol: $0.symbol, name: $0.name) }
+                    case .failure:
+                        self.action?(.showError)
+                    }
+
+                    mainQueue.async {
+                        self.action?(.reload)
+                        self.action?(.finishLoading)
+                    }
                 }
             }
         }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: searchWorkItem!)
     }
 
     func didSelectRow(at indexPath: IndexPath) {
