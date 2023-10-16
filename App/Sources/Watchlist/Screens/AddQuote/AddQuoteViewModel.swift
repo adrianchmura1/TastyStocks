@@ -23,6 +23,8 @@ final class AddQuoteViewModel {
     private let backgroundQueue: Queue
     private let mainQueue: Queue
 
+    private var searchWorkItem: DispatchWorkItem?
+
     init(
         backgroundQueue: Queue = DefaultBackgroundQueue(),
         mainQueue: Queue = DefaultMainQueue(),
@@ -33,7 +35,6 @@ final class AddQuoteViewModel {
         self.mainQueue = mainQueue
     }
 
-    private var searchWorkItem: DispatchWorkItem?
 
     func textDidChange(with searchText: String) {
         searchWorkItem?.cancel()

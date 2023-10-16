@@ -13,9 +13,9 @@ final class WatchlistDatabase: WatchlistDatabaseProtocol {
     private let watchlistsKey = "Watchlists"
     private let activeWatchlistIDKey = "ActiveWatchlistID"
 
-    private let userDefaults: UserDefaults
+    private let userDefaults: UserDefaultsProtocol
 
-    init(userDefaults: UserDefaults = .standard) {
+    init(userDefaults: UserDefaultsProtocol = UserDefaults.standard) {
         self.userDefaults = userDefaults
     }
 
